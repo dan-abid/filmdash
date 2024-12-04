@@ -1,1 +1,55 @@
-// Specific CSS for your home-page
+body {
+  margin: 0;
+  padding: 0;
+  width: 360px;
+  /* Setting the width to match your screen dimensions */
+  height: 760px;
+  /* Setting the height to match your screen dimensions */
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.top-image {
+  position: relative;
+  height: calc(66.67vh - 20px);
+  /* Top 2/3 of the screen minus padding */
+  overflow: hidden;
+}
+
+.bottom-image {
+  padding-top: 20px;
+  /* Space between the two pictures */
+  height: calc(33.33vh - 20px);
+  /* Bottom 1/3 of the screen minus padding */
+  overflow: hidden;
+}
+
+.top-image img,
+.bottom-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  /* Adding shadow for better readability */
+}
+
+.header-text h1 {
+  font-size: 1.5em;
+  /* Adjusted font size for H1 to fit on one line */
+  white-space: nowrap;
+  /* Prevents the text from wrapping */
+}
+
+.header-text h2 {
+  font-size: 0.75em;
+  /* Adjusted font size for H2 */
+}
