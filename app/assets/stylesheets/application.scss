@@ -12,6 +12,8 @@
 @import "pages/index";
 
 body {
-  height: 3040px;
-  width: 1440px;
+  margin: 0;
+  padding: 0;
+  width: 100vw;  /* Utilise toute la largeur de l'écran (en viewport units) */
+  height: 100vh; /* Utilise toute la hauteur de l'écran (en viewport units) */
 }
