@@ -11,7 +11,19 @@
 @import "components/index";
 @import "pages/index";
 
+// your stylesheets
+@import "pages/preferences_movies";
+
 body {
+  font-family: $body-font;
+  background: #000;
   height: 932px;
   width: 430px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $headers-font;
+  color: #fff;
 }

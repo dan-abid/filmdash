@@ -1,0 +1,17 @@
+<h1>Your Selection!</h1>
+
+<div class="suggested-movies">
+  <% @suggested_movies.each do |movie| %>
+    <div class="movie-card">
+      <%= image_tag movie.image_url, alt: movie.title %>
+      <h2><%= movie.title %></h2>
+      <p><%= movie.description %></p>
+      <p><strong>Genre:</strong> <%= movie.genre %></p>
+      <p><strong>Rating:</strong> <%= movie.rating %></p>
+    </div>
+  <% end %>
+</div>
+
+<div class="generate-button">
+  <%= button_to 'Generate New Selection', preferences_movies_path, method: :get, class: 'btn btn-primary' %>
+</div>
