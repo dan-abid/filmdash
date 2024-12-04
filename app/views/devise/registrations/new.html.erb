@@ -15,6 +15,11 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :vpn,
+                required: true,
+                collection: ["yes", "no"],
+                as: :radio_buttons,
+                label: "Do you have a VPN?" %>
   </div>
 
   <div class="form-actions">
