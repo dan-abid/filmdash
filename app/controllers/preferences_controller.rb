@@ -1,4 +1,7 @@
 class PreferencesController < ApplicationController
+  def preferences
+    render 'pages/preferences'
+  end
 
   def movies
     @suggested_movies = fetch_suggested_movies(current_user)
