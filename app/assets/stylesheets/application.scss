@@ -19,9 +19,6 @@ body {
   font-family: $body-font;
 }
 
-h1,
-h2,
-h3 {
-  font-family: $headers-font;
-  color: #fff;
+.homepage {
+  overflow: hidden;
 }
