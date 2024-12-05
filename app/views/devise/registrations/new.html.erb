@@ -22,6 +22,11 @@
     <%= f.association :country,
                 required: true,
                 label: "In which country are you located?" %>
+    <%= f.association :streaming_services,
+                as: :check_boxes,
+                collection: StreamingService.all,
+                required: true,
+                label: "Select your streamings subscription" %>
   </div>
 
   <div class="form-actions">
