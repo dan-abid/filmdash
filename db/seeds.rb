@@ -258,48 +258,36 @@ countries_array = [{name: "Afghanistan", code: "AF"},
   {name: "Åland Islands", code: "AX"}]
 
 
-streaming_services_array = [{ name: "Netflix" },
-  { name: "Amazon Prime" },
-  { name: "Hulu" },
-  { name: "Disney Plus" },
-  { name: "Apple TV Plus" },
-  { name: "HBO Max" },
-  { name: "Peacock" },
-  { name: "YouTube Premium" },
-  { name: "Paramount Plus" },
-  { name: "Shudder" },
-  { name: "Crunchyroll" },
-  { name: "Spotify" },
-  { name: "Tubi" },
-  { name: "Vudu" },
-  { name: "Criterion"},
-  { name: "Sling TV" },
-  { name: "FuboTV" },
-  { name: "Mubi" },
-  { name: "Rakuten TV" },
-  { name: "Acorn TV" },
-  { name: "Discovery Plus" },
-  { name: "BBC iPlayer" },
-  { name: "Stan" },
-  { name: "Crave" },
-  { name: "Kocowa" },
-  { name: "Viki" },
-  { name: "Showtime" },
-  { name: "Epix" },
-  { name: "Filmin" },
-  { name: "Hayu" },
-  { name: "Acorn TV" },
-  { name: "Funimation" },
-  { name: "Shout! Factory TV" },
-  { name: "Docsville" },
-  { name: "Vimeo" },
-  { name: "Real de España" },
-  { name: "Viu" },
-  { name: "Twitch" },
-  { name: "Lionsgate Play" },
-  { name: "Peacock TV" },
-  { name: "Redbox" }]
+streaming_services_array = [
+  {name: "The Criterion Channel"},
+  {name: "Netflix"},
+  {name: "Hulu"},
+  {name: "Max"},
+  {name: "Prime Video"},
+  {name: "Disney+"},
+  {name: "AppleTV+"},
+  {name: "Paramount+"},
+  {name: "Showtime"},
+  {name: "Crave"},
+  {name: "Peacock Premium"},
+  {name: "Crave Starz"},
+  {name: "STARZ"},
+  {name: "MGM+"},
+  {name: "Now TV"},
+  {name: "BINGE"},
+  {name: "Kanopy"},
+  {name: "Youtube Premium"},
+  {name: "ICI TOU.TV"},
+  {name: "MUBI"}
+]
+sorted_streamings = streaming_services_array.sort_by { |services| services[:name] }
+
+
 
 countries_array.each do |pays|
   Country.create!(name: pays[:name], code: pays[:code])
+end
+
+sorted_streamings.each do |service|
+  StreamingService.create!(name: service[:name])
 end
