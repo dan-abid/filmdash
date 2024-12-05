@@ -1,0 +1,49 @@
+.suggested-movies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; // Space between movie cards
+}
+
+.movie-card {
+  border: none;
+  padding: 0;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; // Ensure the image doesn't overflow the card
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.generate-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.generate-button {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
