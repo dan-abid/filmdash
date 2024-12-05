@@ -21,4 +21,3 @@ streaming_services_array = [
   {name: "MUBI"}
 ]
 sorted_streamings = streaming_services_array.sort_by { |services| services[:name] }
-pp sorted_streamings
