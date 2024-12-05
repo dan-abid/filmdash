@@ -12,6 +12,7 @@
 
   <body><%= render "shared/navbar" %>
   <%= render "shared/flashes" %>
+  <body class="<%= 'homepage' if current_page?(root_path) %>">
 
     <%= yield %>
   </body>
