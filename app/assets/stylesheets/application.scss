@@ -1,13 +1,8 @@
-// Graphical variables
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
-
-// External libraries
 @import "bootstrap";
 @import "font-awesome";
-
-// Your CSS partials
 @import "components/index";
 @import "pages/index";
 
@@ -15,10 +10,13 @@
 @import "pages/preferences_movies";
 
 body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1E1E1E;
+  color: #fff;
   font-family: $body-font;
-  background: #000;
-  height: 932px;
-  width: 430px;
 }
 
 h1,

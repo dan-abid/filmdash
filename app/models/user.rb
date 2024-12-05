@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :user_streaming_services
   has_many :streaming_services, through: :user_streaming_services
+  belongs_to :country
 end
