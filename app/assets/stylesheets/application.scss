@@ -5,7 +5,11 @@
 @import "font-awesome";
 @import "components/index";
 @import "pages/index";
+
+// component styles
 @import "components/menubar";
+
+// main styles
 @import "components/variables";
 
 // your stylesheets
@@ -16,8 +20,8 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #1E1E1E;
-  color: #fff;
+  background-color: $dark-grey;
+  color: $white;
   font-family: $body-font;
 }
 
