@@ -1,9 +1,6 @@
-
-
 .scrolling {
   overflow-x: auto;
-  white-space: nowrap;
-  height: 50%;
+  height: 55%;
   // background-color: blue;
   width: 100%;
 }
@@ -15,28 +12,20 @@
 .section {
   // background-color: red;
   height: 20%;
+  width: 100%;
 }
 
 .form-height {
   height: 100%;
 }
 
-#movie-img {
-  background-image: url("preferences/format/amelie.jpg");
+.radio-space {
   object-fit: contain;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
-  padding-right: 20%;
-}
-
-#serie-img {
-  background-image: url("preferences/format/Series.jpg");
-  object-fit:cover;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100%;
-  padding-right: 20%;
+  padding-right: 25%;
+  margin-right: 4%;
+  border-radius:3px;
 }
