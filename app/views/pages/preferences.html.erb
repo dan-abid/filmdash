@@ -3,15 +3,15 @@
 </div>
 
 
-<%= form_with url: preferences_movies_path, method: :get do |f| %>
+<%= form_with url: preferences_movies_path, class: "form-height", method: :get do |f| %>
   <div class="section mt-5 container">
     <h5>Format</h5>
-    <div class="d-flex">
-      <div class="radio-space">
+    <div class="d-flex justify-content-between scrolling">
+      <div class="radio-space" id="movie-img">
         <%= f.radio_button :format, "movie", id: 'movie' %>
         <%= f.label :format, "Movies", for: "movie" %>
       </div>
-      <div class="radio-space">
+      <div class="radio-space" id="serie-img">
         <%= f.radio_button :format, "series", id: 'tv_series' %>
         <%= f.label :format, "Series", for: "tv_series" %>
       </div>
@@ -32,7 +32,7 @@
 
   <div class="section mt-5 container">
     <h5>Runtime</h5>
-    <div class="d-flex">
+    <div class="d-flex scrolling">
       <div class="radio-space">
         <%= f.radio_button :runtime, "60", id: '60' %>
         <%= f.label :runtime, "1h and less", for: "60" %>
@@ -50,7 +50,7 @@
 
   <div class="section mt-5 container">
     <h5>Genre</h5>
-    <div class="d-flex">
+    <div class="d-flex scrolling">
       <div class="radio-space">
         <%= f.radio_button :genre, "Action", id: 'Action' %>
         <%= f.label :genre, "Action", for: "Action" %>
@@ -156,7 +156,7 @@
 
   <div class="section mt-5 container">
     <h5>Period</h5>
-    <div class="d-flex">
+    <div class="d-flex scrolling">
       <div class="radio-space">
         <%= f.radio_button :period, "today", id: 'today' %>
         <%= f.label :period, "This year", for: "today" %>
@@ -212,7 +212,6 @@
     <%= f.submit "Generate 3 programs" %>
   </div>
 <% end %>
-
   <%# <div class="container mt-4">
     <h5>Format</h5>
   </div> %>
