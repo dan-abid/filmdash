@@ -9,7 +9,7 @@
   color: $black;
   /* Black text */
   padding: 10px 20px;
-  font-size: 0.9em;
+  font-size: $medium-font;
   /* Slightly smaller font size */
   font-weight: bold;
   /* Make text bold */
@@ -19,7 +19,7 @@
   cursor: pointer;
   text-decoration: none;
   /* Remove underline */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px $transparent-grey;
   /* Add shadow */
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 
@@ -28,7 +28,7 @@
     /* Black background on hover */
     color: $white;
     /* White text on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 8px $transparent-grey;
     /* Slightly larger shadow on hover */
   }
 }
