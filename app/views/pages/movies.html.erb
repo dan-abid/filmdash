@@ -1,17 +1,150 @@
-<h1 style="text-align: center; padding-top: 25px;">Your Selection!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Movie Selection</title>
+  <link rel="stylesheet" href="/assets/stylesheets/components/_movie_card.scss">
+  <link rel="stylesheet" href="/assets/stylesheets/components/_button.scss">
+  <style>
 
-<div class="movie-card">
-  <%# <div class="placeholder" alt="Placeholder 1"></div> %>
-</div>
-<div class="movie-card">
-  <%# <div class="placeholder" alt="Placeholder 2"></div> %>
-</div>
-<div class="movie-card">
-  <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-</div>
+    .popup {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      padding: 20px;
+      background-color: grey;
+      border: 1px solid black;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      text-align: center;
+    }
+    .popup p {
+      color: white;
+    }
+    .popup img {
+      width: 80px;
+      margin-top: 10px;
+      position: relative;
+    }
+    .popup .play-button {
+      position: absolute;
+      top: calc(50% + 20px); /* Adjusted to be over the Netflix logo */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .popup-close {
+      display: block;
+      margin-top: 20px;
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; padding-top: 25px;">Your Selection!</h1>
 
-<div class="generate-button-container">
-  <div class="generate-button">
-    <button class="button-get-started">Generate New Selection</button>
+  <div class="movie-card" data-movie="1" onclick="showMovieInfo(this, 'Movie Title 1', 'Some brief information about movie 1 goes here. This can include a short description, genre, rating, etc.')">
+    <%# <div class="placeholder" alt="Placeholder 1"></div> %>
   </div>
-</div>
+  <div class="movie-card" data-movie="2" onclick="showMovieInfo(this, 'Movie Title 2', 'Some brief information about movie 2 goes here. This can include a short description, genre, rating, etc.')">
+    <%# <div class="placeholder" alt="Placeholder 2"></div> %>
+  </div>
+  <div class="movie-card" data-movie="3" onclick="showMovieInfo(this, 'Movie Title 3', 'Some brief information about movie 3 goes here. This can include a short description, genre, rating, etc.')">
+    <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+  </div>
+
+  <div class="generate-button-container">
+    <div class="generate-button">
+      <button class="button-get-started">Generate New Selection</button>
+    </div>
+  </div>
+
+  <!-- Pop-up window -->
+  <div id="popup" class="popup">
+    <p>Watch this movie on:</p>
+    <img src="https://logos-world.net/wp-content/uploads/2020/04/Netflix-Logo-700x394.png" alt="Netflix Logo">
+    <div class="play-button">&#9658;</div> <!-- Play button over Netflix logo -->
+    <button class="popup-close" onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    function showMovieInfo(element, title, info) {
+      // Reset all movie cards to their original state
+      document.querySelectorAll('.movie-card').forEach(card => {
+        card.style.margin = '20px auto';
+        card.style.display = 'block';
+        card.style.float = 'none';
+
+        // Remove any existing play button
+        const playButton = card.querySelector('.play-button');
+        if (playButton) {
+          card.removeChild(playButton);
+        }
+      });
+
+      // Move the clicked movie card to the left
+      element.style.margin = '20px 0';
+      element.style.display = 'inline-block';
+      element.style.float = 'left';
+
+      // Create the movie info container dynamically
+      let movieInfoContainer = document.querySelector('.movie-info-container');
+      if (!movieInfoContainer) {
+        movieInfoContainer = document.createElement('div');
+        movieInfoContainer.classList.add('movie-info-container');
+        element.parentNode.insertBefore(movieInfoContainer, element.nextSibling);
+      }
+
+      // Update the movie info container with new info
+      movieInfoContainer.style.display = 'flex';
+      movieInfoContainer.style.alignItems = 'center';
+      movieInfoContainer.innerHTML = `
+        <div class="movie-info">
+          <h2>${title}</h2>
+          <p>${info}</p>
+          <button class="more-details-button" onclick="showMoreDetails()">More Details</button>
+        </div>
+      `;
+
+      // Add a play button overlay on the clicked movie card
+      const playButton = document.createElement('div');
+      playButton.classList.add('play-button');
+      playButton.innerHTML = '&#9658;'; // Unicode for play button (triangle)
+      playButton.onclick = showPopup;
+      element.appendChild(playButton);
+    }
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function showMoreDetails() {
+      alert('More details coming soon!'); //replace this with actual functionality later
+    }
+  </script>
+</body>
+</html>
