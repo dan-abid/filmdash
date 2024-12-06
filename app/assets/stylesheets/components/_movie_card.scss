@@ -13,31 +13,20 @@
   border: 1px solid lightgray;
 }
 
-.movie-info-container {
-  display: none;
-  /* Initially hidden */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: flex;
   align-items: center;
-  margin: 20px 0;
-}
-
-.movie-card-left {
-  width: 97px;
-  /* Adjust as needed */
-  height: 152px;
-  /* Adjust as needed */
-  margin: 0;
-}
-
-.movie-info {
-  margin-left: 20px;
-  /* Space between movie card and info */
-}
-
-.movie-info h2 {
-  margin: 0;
-  font-size: 1.5em;
-}
-
-.movie-info p {
-  margin: 5px 0 0 0;
+  justify-content: center;
+  cursor: pointer;
 }
