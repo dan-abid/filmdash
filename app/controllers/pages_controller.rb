@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 
   def preferences
   end
+
+  def movies
+    # raise
+  end
 end

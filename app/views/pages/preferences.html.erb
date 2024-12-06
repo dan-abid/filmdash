@@ -153,6 +153,64 @@
       </div>
     </div>
   </div>
+
+  <div class="section mt-5 container">
+    <h5>Period</h5>
+    <div class="d-flex">
+      <div class="radio-space">
+        <%= f.radio_button :period, "today", id: 'today' %>
+        <%= f.label :period, "This year", for: "today" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "2020-01-01", id: '2020-01-01' %>
+        <%= f.label :period, "2020's", for: "2020-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "2010-01-01", id: '2010-01-01' %>
+        <%= f.label :period, "2010's", for: "2010-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "2000-01-01", id: '2000-01-01' %>
+        <%= f.label :period, "2000's", for: "2000-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1990-01-01", id: '1990-01-01' %>
+        <%= f.label :period, "1990's", for: "1990-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1980-01-01", id: '1980-01-01' %>
+        <%= f.label :period, "1980's", for: "1980-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1970-01-01", id: '1970-01-01' %>
+        <%= f.label :period, "1970's", for: "1970-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1960-01-01", id: '1960-01-01' %>
+        <%= f.label :period, "1960's", for: "1960-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1950-01-01", id: '1950-01-01' %>
+        <%= f.label :period, "1950's", for: "1950-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1940-01-01", id: '1940-01-01' %>
+        <%= f.label :period, "1940's", for: "1940-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1930-01-01", id: '1930-01-01' %>
+        <%= f.label :period, "1930's", for: "1930-01-01" %>
+      </div>
+      <div class="radio-space">
+        <%= f.radio_button :period, "1920-01-01", id: '1920-01-01' %>
+        <%= f.label :period, "1920's", for: "1920-01-01" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    <%= f.submit "Generate 3 programs" %>
+  </div>
 <% end %>
 
   <%# <div class="container mt-4">
