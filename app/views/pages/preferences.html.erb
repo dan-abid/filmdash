@@ -4,9 +4,9 @@
 
 
 <%= form_with url: preferences_movies_path, class: "form-height", method: :get do |f| %>
-  <div class="section mt-5 container">
+  <div class="section mt-5">
     <h5>Format</h5>
-    <div class="d-flex justify-content-between scrolling">
+    <div class="d-flex scrolling">
       <div class="radio-space" id="movie-img">
         <%= f.radio_button :format, "movie", id: 'movie' %>
         <%= f.label :format, "Movies", for: "movie" %>
@@ -15,15 +15,11 @@
         <%= f.radio_button :format, "series", id: 'tv_series' %>
         <%= f.label :format, "Series", for: "tv_series" %>
       </div>
-      <div class="radio-space">
+      <div class="radio-space" id="short-img">
         <%= f.radio_button :format, "short_film", id: 'short_film' %>
         <%= f.label :format, "Short Films", for: "short_film" %>
       </div>
-      <div class="radio-space">
-        <%= f.radio_button :format, "tv_series", id: "tv_series" %>
-        <%= f.label :format, "Series", for: "tv_series" %>
-      </div>
-      <div class="radio-space">
+      <div class="radio-space" id="mini-img">
         <%= f.radio_button :format, "tv_miniseries", id: 'tv_miniseries' %>
         <%= f.label :format, "Mini Series", for: "tv_miniseries" %>
       </div>
