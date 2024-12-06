@@ -1,14 +1,43 @@
 .movie-card {
-  width: 27%;
-  /* Maintain percentage width */
-  height: 20%;
-  /* Maintain percentage height */
-  margin: 30px auto;
+  width: 97px;
+  /* Fixed width */
+  height: 152px;
+  /* Fixed height */
+  margin: 20px auto;
   /* Increased vertical margin for spacing */
-  background-color: $white;
+  background-color: white;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba($black, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   text-align: center;
-  border: 1px solid $light-gray;
+  border: 1px solid lightgray;
+}
+
+.movie-info-container {
+  display: none;
+  /* Initially hidden */
+  align-items: center;
+  margin: 20px 0;
+}
+
+.movie-card-left {
+  width: 97px;
+  /* Adjust as needed */
+  height: 152px;
+  /* Adjust as needed */
+  margin: 0;
+}
+
+.movie-info {
+  margin-left: 20px;
+  /* Space between movie card and info */
+}
+
+.movie-info h2 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.movie-info p {
+  margin: 5px 0 0 0;
 }
