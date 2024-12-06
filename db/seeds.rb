@@ -259,26 +259,18 @@ countries_array = [{name: "Afghanistan", code: "AF"},
 
 
 streaming_services_array = [
-  {name: "The Criterion Channel"},
-  {name: "Netflix"},
-  {name: "Hulu"},
-  {name: "Max"},
-  {name: "Prime Video"},
-  {name: "Disney+"},
-  {name: "AppleTV+"},
-  {name: "Paramount+"},
-  {name: "Showtime"},
-  {name: "Crave"},
-  {name: "Peacock Premium"},
-  {name: "Crave Starz"},
-  {name: "STARZ"},
-  {name: "MGM+"},
-  {name: "Now TV"},
-  {name: "BINGE"},
-  {name: "Kanopy"},
-  {name: "Youtube Premium"},
-  {name: "ICI TOU.TV"},
-  {name: "MUBI"}
+  {name: "The Criterion Channel", source_id: 366},
+  {name: "Netflix", source_id: 203},
+  {name: "Hulu", source_id: 157},
+  {name: "Max", source_id: 387},
+  {name: "Prime Video", source_id: 26},
+  {name: "Disney+", source_id: 372},
+  {name: "AppleTV+", source_id: 371},
+  {name: "Paramount+", source_id: 444},
+  {name: "Crave", source_id: 393},
+  {name: "Peacock Premium", source_id: 388},
+  {name: "ICI TOU.TV", source_id: 396},
+  {name: "MUBI", source_id: 181}
 ]
 sorted_streamings = streaming_services_array.sort_by { |services| services[:name] }
 
@@ -289,5 +281,5 @@ countries_array.each do |pays|
 end
 
 sorted_streamings.each do |service|
-  StreamingService.create!(name: service[:name])
+  StreamingService.create!(name: service[:name], source_id: service[:source_id])
 end
