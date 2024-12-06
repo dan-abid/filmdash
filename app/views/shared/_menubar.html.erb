@@ -8,7 +8,7 @@
 <%= link_to root_path, class: "icon-white" do %>
   <i class="fa-solid fa-bars"></i>
 <% end %>
-<%= link_to root_path, class: "icon-white" do %>
+<%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "icon-white" do %>
   <i class="fa-solid fa-arrow-right-from-bracket"></i>
 <% end %>
 </div>
