@@ -5,12 +5,12 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: rgb(58, 58, 58);
+  background-color: $dark-grey;
   align-items: center;
   z-index: 1000;
 }
 
 .icon-white {
-  font-size: 20px;
+  font-size: $big-font;
   color: white;
 }
