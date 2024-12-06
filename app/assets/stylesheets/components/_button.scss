@@ -3,7 +3,8 @@
   text-align: center;
 }
 
-.button-get-started {
+.button-get-started,
+.more-details-button {
   background-color: $white;
   /* White background */
   color: $black;
@@ -22,13 +23,14 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   /* Add shadow */
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
 
-  &:hover {
-    background-color: $black;
-    /* Black background on hover */
-    color: $white;
-    /* White text on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-    /* Slightly larger shadow on hover */
-  }
+.button-get-started:hover,
+.more-details-button:hover {
+  background-color: $black;
+  /* Black background on hover */
+  color: $white;
+  /* White text on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  /* Slightly larger shadow on hover */
 }
