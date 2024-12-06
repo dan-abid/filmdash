@@ -8,6 +8,6 @@ class PagesController < ApplicationController
   end
 
   def movies
-    raise
+    # raise
   end
 end
