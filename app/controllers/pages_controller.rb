@@ -3,4 +3,11 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def preferences
+  end
+
+  def movies
+    # raise
+  end
 end
