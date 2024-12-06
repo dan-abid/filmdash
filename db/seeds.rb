@@ -1,14 +1,10 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db: seed command (or created alongside the database with db: setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+UserStreamingService.destroy_all
+StreamingService.destroy_all
+User.destroy_all
+Country.destroy_all
 
-countries_array = [{name: "Afghanistan", code: "AF"},
+countries_array = [
+  {name: "Afghanistan", code: "AF"},
   {name: "Algeria", code: "DZ"},
   {name: "American Samoa", code: "AS"},
   {name: "Andorra", code: "AD"},
@@ -255,7 +251,8 @@ countries_array = [{name: "Afghanistan", code: "AF"},
   {name: "Yemen", code: "YE"},
   {name: "Zambia", code: "ZM"},
   {name: "Zimbabwe", code: "ZW"},
-  {name: "Åland Islands", code: "AX"}]
+  {name: "Åland Islands", code: "AX"}
+]
 
 
 streaming_services_array = [
