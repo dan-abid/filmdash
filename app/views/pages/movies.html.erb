@@ -1,16 +1,11 @@
 
 <h1 style="text-align: center; padding-top: 25px;">Your Selection!</h1>
 
-<% @result_tt["titles"].each do |titre| %>
-<div class="movie-card">
-  <%# <div class="placeholder" alt="Placeholder 1">
-  </div> %>
-  <%= titre["title"] %>
+<% @result.each do |resultat| %>
+<div class="movie-card" style="background-image:url('<%= resultat["poster"] %>')">
+  <%# <div class="placeholder" alt="Placeholder 2"></div> %>
 </div>
 <% end %>
-<%# <div class="movie-card"> %>
-  <%# <div class="placeholder" alt="Placeholder 2"></div> %>
-<%# </div> %>
 <%# <div class="movie-card"> %>
   <%# <div class="placeholder" alt="Placeholder 3"></div> %>
 <%# </div> %>

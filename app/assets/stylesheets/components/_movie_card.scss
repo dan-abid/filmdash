@@ -5,12 +5,13 @@
   /* Fixed height */
   margin: 20px auto;
   /* Increased vertical margin for spacing */
-  background-color: $black;
-  border-radius: 15px;
+  border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   text-align: center;
-  border: 1px solid lightgray;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .play-button {
