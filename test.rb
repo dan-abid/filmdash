@@ -34,12 +34,8 @@ require "rest-client"
 # release_date_end = ("20100101").to_i + 100000
 # release_date_end_s = release_date_end.to_s
 # pp release_date_end_s
-
-
 <% @result.each do |resultat| %>
-  <div class="movie-card" style="background-image: url('<%= resultat["poster"] %>');" >
-    <%# <div class="placeholder" alt="Placeholder 1">
-    </div> %>
-    <%= resultat["title"] %>
+  <div class="movie-card" style="background-image:url('<%= resultat["poster"] %>')">
+    <%# <div class="placeholder" alt="Placeholder 2"></div> %>
   </div>
-<% end %>
+  <% end %>
