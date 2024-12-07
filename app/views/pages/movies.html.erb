@@ -1,17 +1,21 @@
 
 <h1 style="text-align: center; padding-top: 25px;">Your Selection!</h1>
 
+<div data-controller="toggle">
+  <div class="movie-card" style="background-image:url('https://i.ebayimg.com/images/g/eKEAAOxyOMdS4U2W/s-l400.jpg')" data-action="click->toggle#fire">
+    <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+  </div>
+  <div data-toggle-target="togglableElement" class="d-none">
+    <h5>Breaking bad</h5>
+  </div>
 
-<div class="movie-card" style="background-image:url('https://i.ebayimg.com/images/g/eKEAAOxyOMdS4U2W/s-l400.jpg')">
-  <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-</div>
+  <div class="movie-card">
+    <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+  </div>
 
-<div class="movie-card">
-  <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-</div>
-
-<div class="movie-card">
-  <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+  <div class="movie-card">
+    <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+  </div>
 </div>
 
 <div class="generate-button-container">
