@@ -1,12 +1,15 @@
 
 <h1 style="text-align: center; padding-top: 25px;">Your Selection!</h1>
 
-<div data-controller="toggle">
-  <div class="movie-card" style="background-image:url('https://i.ebayimg.com/images/g/eKEAAOxyOMdS4U2W/s-l400.jpg')" data-action="click->toggle#fire">
-    <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-  </div>
-  <div data-toggle-target="togglableElement" class="d-none">
-    <h5>Breaking bad</h5>
+<div class="d-flex flex-column align-items-center my-5" data-controller="toggle">
+  <div data-toggle-target="movedElement" class="row justify-content-center movie-info">
+    <div class="movie-card col-4" data-toggle-target="movingElement" data-action="click->toggle#fire" style="background-image:url('https://i.ebayimg.com/images/g/eKEAAOxyOMdS4U2W/s-l400.jpg')">
+      <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+    </div>
+    <div data-toggle-target="appearElement" class="d-none title col-8">
+      <p><strong>Breaking bad</strong></p>
+      <p class="text-warning"><i class="fa-solid fa-star"></i></p>
+    </div>
   </div>
 
   <div class="movie-card">

@@ -3,16 +3,27 @@
   /* Fixed width */
   height: 152px;
   /* Fixed height */
-  margin: 20px auto;
   /* Increased vertical margin for spacing */
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  text-align: center;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.movie-info {
+  width: 85%;
+}
+
+.title {
+
+}
+
+.moved {
+  display: flex;
+  justify-content: center;
 }
 
 .play-button {
