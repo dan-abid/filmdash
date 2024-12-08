@@ -1,28 +1,77 @@
 
 <h1 style="text-align: center; padding-top: 25px;">Your Selection!</h1>
 
-<div class="d-flex flex-column align-items-center my-5" data-controller="toggle">
-  <div data-toggle-target="movedElement" class="row justify-content-center movie-info">
-    <div class="movie-card col-4" data-toggle-target="movingElement" data-action="click->toggle#fire" style="background-image:url('https://i.ebayimg.com/images/g/eKEAAOxyOMdS4U2W/s-l400.jpg')">
-      <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+<div class="d-flex flex-column align-items-center my-4" data-controller="toggle">
+
+    <div data-action="click->toggle#button1" class="row justify-content-center movie-info mb-3">
+      <div class="movie-card col-4" style="background-image:url('<%= @result[0]["poster"] %>')">
+        <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+        <div class="d-none play-button" data-toggle-target="play1Element">
+          <p><i class="fa-solid fa-play"></i></p>
+        </div>
+      </div>
+      <div data-toggle-target="appear1Element" class="d-none infos d-flex flex-column align-items-start col-8">
+        <div class="title">
+          <p><strong><%= @result[0]["title"] %></strong></p>
+        </div>
+        <div class="rating">
+          <p><i class="fa-solid fa-star text-warning"></i> <%= @result[0]["user_rating"] %>/10</p>
+        </div>
+        <div class="description">
+          <p><%= @result[0]["plot_overview"] %></p>
+        </div>
+        <div>
+        </div>
+      </div>
     </div>
-    <div data-toggle-target="appearElement" class="d-none title col-8">
-      <p><strong>Breaking bad</strong></p>
-      <p class="text-warning"><i class="fa-solid fa-star"></i></p>
+
+    <div data-action="click->toggle#button2" class="row justify-content-center movie-info mb-3">
+      <div class="movie-card col-4" style="background-image:url('<%= @result[1]["poster"] %>')">
+        <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+        <div class="d-none play-button" data-toggle-target="play2Element">
+          <p><i class="fa-solid fa-play"></i></p>
+        </div>
+      </div>
+      <div data-toggle-target="appear2Element" class="d-none infos d-flex flex-column align-items-start col-8">
+        <div class="title">
+          <p><strong><%= @result[1]["title"] %></strong></p>
+        </div>
+        <div class="rating">
+          <p><i class="fa-solid fa-star text-warning"></i> <%= @result[1]["user_rating"] %>/10</p>
+        </div>
+        <div class="description">
+          <p><%= @result[1]["plot_overview"] %></p>
+        </div>
+        <div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="movie-card">
-    <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-  </div>
+    <div data-action="click->toggle#button3" class="row justify-content-center movie-info mb-3">
+      <div class="movie-card col-4" style="background-image:url('<%= @result[2]["poster"] %>')">
+        <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+        <div class="d-none play-button" data-toggle-target="play3Element">
+          <p><i class="fa-solid fa-play"></i></p>
+        </div>
+      </div>
+      <div data-toggle-target="appear3Element" class="d-none infos d-flex flex-column align-items-start col-8">
+        <div class="title">
+          <p><strong><%= @result[2]["title"] %></strong></p>
+        </div>
+        <div class="rating">
+          <p><i class="fa-solid fa-star text-warning"></i> <%= @result[2]["user_rating"] %>/10</p>
+        </div>
+        <div class="description">
+          <p><%= @result[2]["plot_overview"] %></p>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
 
-  <div class="movie-card">
-    <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-  </div>
-</div>
-
-<div class="generate-button-container">
-  <div class="generate-button">
-    <button class="button-get-started">Generate New Selection</button>
+  <div class="generate-button-container">
+    <div class="generate-button">
+      <button data-action="click->toggle#refresh" class="button-get-started">Generate New Selection</button>
+    </div>
   </div>
 </div>
