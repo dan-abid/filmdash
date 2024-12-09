@@ -25,7 +25,6 @@ class PagesController < ApplicationController
       titles_details_parse = RestClient.get "https://api.watchmode.com/v1/title/#{title["imdb_id"]}/details/?apiKey=#{ENV["API_KEY_WATCHMODE"]}"
       JSON.parse(titles_details_parse)
     end
-
     # @result = result_tt
   end
 end
