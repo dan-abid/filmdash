@@ -1,77 +1,88 @@
+<h1 id="main-header" style="text-align: center; padding-top: 25px;">Your Selection!</h1>
 
-<h1 style="text-align: center; padding-top: 25px;">Your Selection!</h1>
-
-<div class="d-flex flex-column align-items-center my-4" data-controller="toggle">
-
-    <div data-toggle-target="container1Element" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" data-action="click->toggle#button1" style="background-image:url('<%= @result[0]["poster"] %>')">
-        <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-        <div class="d-none play-button" data-toggle-target="play1Element">
+<div id="movies-container" class="d-flex flex-column align-items-center my-4">
+  <% @result.each_with_index do |movie, index| %>
+    <div class="row justify-content-center movie-info mb-3">
+      <div class="movie-card col-4" style="background-image:url('<%= movie["poster"] %>')" onclick="toggleMovieInfo(<%= index %>)">
+        <div class="d-none play-button">
           <p><i class="fa-solid fa-play"></i></p>
         </div>
       </div>
-      <div data-toggle-target="appear1Element" class="d-none infos d-flex flex-column align-items-start col-8">
+      <div id="movie-info-<%= index %>" class="d-none infos d-flex flex-column align-items-start col-8">
         <div class="title">
-          <p><strong><%= @result[0]["title"] %></strong></p>
+          <p><strong><%= movie["title"] %></strong></p>
         </div>
         <div class="rating">
-          <p><i class="fa-solid fa-star text-warning"></i> <%= @result[0]["user_rating"] %>/10</p>
+          <p><i class="fa-solid fa-star text-warning"></i> <%= movie["user_rating"] %>/10</p>
         </div>
-        <div class="description">
-          <p><%= @result[0]["plot_overview"] %></p>
-        </div>
-        <div>
+        <div class="description" onclick="showMovieDetails(<%= index %>)" style="cursor:pointer;">
+          <p><%= movie["plot_overview"] %></p>
         </div>
       </div>
     </div>
-
-    <div data-toggle-target="container2Element" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" data-action="click->toggle#button2" style="background-image:url('<%= @result[1]["poster"] %>')">
-        <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-        <div class="d-none play-button" data-toggle-target="play2Element">
-          <p><i class="fa-solid fa-play"></i></p>
-        </div>
-      </div>
-      <div data-toggle-target="appear2Element" class="d-none infos d-flex flex-column align-items-start col-8">
-        <div class="title">
-          <p><strong><%= @result[1]["title"] %></strong></p>
-        </div>
-        <div class="rating">
-          <p><i class="fa-solid fa-star text-warning"></i> <%= @result[1]["user_rating"] %>/10</p>
-        </div>
-        <div class="description">
-          <p><%= @result[1]["plot_overview"] %></p>
-        </div>
-        <div>
-        </div>
-      </div>
-    </div>
-
-    <div data-toggle-target="container3Element" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" data-action="click->toggle#button3" style="background-image:url('<%= @result[2]["poster"] %>')">
-        <%# <div class="placeholder" alt="Placeholder 3"></div> %>
-        <div class="d-none play-button" data-toggle-target="play3Element">
-          <p><i class="fa-solid fa-play"></i></p>
-        </div>
-      </div>
-      <div data-toggle-target="appear3Element" class="d-none infos d-flex flex-column align-items-start col-8">
-        <div class="title">
-          <p><strong><%= @result[2]["title"] %></strong></p>
-        </div>
-        <div class="rating">
-          <p><i class="fa-solid fa-star text-warning"></i> <%= @result[2]["user_rating"] %>/10</p>
-        </div>
-        <div class="description">
-          <p><%= @result[2]["plot_overview"] %></p>
-        </div>
-        <div>
-        </div>
-      </div>
-    </div>
+  <% end %>
 
   <div class="generate-button-container">
     <div class="generate-button">
-      <button data-action="click->toggle#refresh" class="button-get-started">Generate New Selection</button>
+      <button class="button-get-started">Generate New Selection</button>
     </div>
   </div>
 </div>
+
+<!-- Modal for Movie Details -->
+<div id="movie-details-modal" class="d-none movie-details-modal">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeMovieDetails()">&times;</span>
+    <div id="movie-details" class="movie-details"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const movies = <%= raw @result.to_json %>;
+
+    window.toggleMovieInfo = function(index) {
+      const movieInfo = document.getElementById(`movie-info-${index}`);
+      movieInfo.classList.toggle("d-none");
+    };
+
+    window.showMovieDetails = function(index) {
+      const movie = movies[index];
+      const movieDetails = document.getElementById("movie-details");
+      const modal = document.getElementById("movie-details-modal");
+      const moviesContainer = document.getElementById("movies-container");
+      const mainHeader = document.getElementById("main-header");
+
+      movieDetails.innerHTML = `
+        <div class="movie-picture">
+          <img src="${movie.poster}" alt="${movie.title}">
+        </div>
+        <div class="movie-content">
+          <h1>${movie.title}</h1>
+          <p><strong>Directed by:</strong> ${movie.director}</p>
+          <p><strong>Run Time:</strong> ${movie.runtime}</p>
+          <p><strong>Genre:</strong> ${movie.genre}</p>
+          <p><strong>Year Made:</strong> ${movie.year_made}</p>
+          <p><strong>Plot Overview:</strong> ${movie.plot_overview}</p>
+          <p><strong>Rating:</strong> ${movie.user_rating}/10</p>
+        </div>
+      `;
+
+      mainHeader.classList.add("d-none");
+      moviesContainer.classList.add("d-none");
+      modal.classList.remove("d-none");
+      modal.classList.add("d-flex");
+    };
+
+    window.closeMovieDetails = function() {
+      const modal = document.getElementById("movie-details-modal");
+      const moviesContainer = document.getElementById("movies-container");
+      const mainHeader = document.getElementById("main-header");
+
+      modal.classList.remove("d-flex");
+      modal.classList.add("d-none");
+      mainHeader.classList.remove("d-none");
+      moviesContainer.classList.remove("d-none");
+    };
+  });
+</script>
