@@ -18,13 +18,18 @@ class PagesController < ApplicationController
     @streaming_services_ids = @streaming_services.map { |streaming| streaming.source_id }.join(',')
     release_date_end = params[:period].to_i + 100000
     @release_date_end_s = release_date_end.to_s
-    response = RestClient.get "https://api.watchmode.com/v1/list-titles/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&types=#{params[:format]}&source_ids=#{@streaming_services_ids}&region=#{@country}&genres=#{params[:genre]}&release_date_start=#{params[:period]}&release_date_end=#{@release_date_end_s}&critic_score_low=8&limit=10"
+    url = "https://api.watchmode.com/v1/list-titles/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&types=#{params[:format]}&source_ids=#{@streaming_services_ids}&source_types=sub&region=#{@country}&genres=#{params[:genre]}&release_date_start=#{params[:period]}&release_date_end=#{@release_date_end_s}&critic_score_low=8&limit=250"
+    # raise
+    response = RestClient.get(url)
     result_tt = JSON.parse(response)
     @result_titles = result_tt["titles"].sample(3)
+    # raise
     @result = @result_titles.map do |title|
-      titles_details_parse = RestClient.get "https://api.watchmode.com/v1/title/#{title["imdb_id"]}/details/?apiKey=#{ENV["API_KEY_WATCHMODE"]}"
+      titles_details_parse = RestClient.get "https://api.watchmode.com/v1/title/#{title["imdb_id"]}/details/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&append_to_response=sources"
       JSON.parse(titles_details_parse)
     end
+
+
     # @result = result_tt
   end
 end

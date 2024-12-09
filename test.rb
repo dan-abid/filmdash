@@ -34,8 +34,48 @@ require "rest-client"
 # release_date_end = ("20100101").to_i + 100000
 # release_date_end_s = release_date_end.to_s
 # pp release_date_end_s
-<% @result.each do |resultat| %>
-  <div class="movie-card" style="background-image:url('<%= resultat["poster"] %>')">
-    <%# <div class="placeholder" alt="Placeholder 2"></div> %>
+
+
+<div data-toggle-target="container2Element" class="row justify-content-center movie-info mb-3">
+<div class="movie-card col-4" data-action="click->toggle#button2" style="background-image:url('<%= @result[1]["poster"] %>')">
+  <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+  <div class="d-none play-button" data-toggle-target="play2Element">
+    <p><i class="fa-solid fa-play"></i></p>
   </div>
-  <% end %>
+</div>
+<div data-toggle-target="appear2Element" class="d-none infos d-flex flex-column align-items-start col-8">
+  <div class="title">
+    <p><strong><%= @result[1]["title"] %></strong></p>
+  </div>
+  <div class="rating">
+    <p><i class="fa-solid fa-star text-warning"></i> <%= @result[1]["user_rating"] %>/10</p>
+  </div>
+  <div class="description">
+    <p><%= @result[1]["plot_overview"] %></p>
+  </div>
+  <div>
+  </div>
+</div>
+</div>
+
+<div data-toggle-target="container3Element" class="row justify-content-center movie-info mb-3">
+<div class="movie-card col-4" data-action="click->toggle#button3" style="background-image:url('<%= @result[2]["poster"] %>')">
+  <%# <div class="placeholder" alt="Placeholder 3"></div> %>
+  <div class="d-none play-button" data-toggle-target="play3Element">
+    <p><i class="fa-solid fa-play"></i></p>
+  </div>
+</div>
+<div data-toggle-target="appear3Element" class="d-none infos d-flex flex-column align-items-start col-8">
+  <div class="title">
+    <p><strong><%= @result[2]["title"] %></strong></p>
+  </div>
+  <div class="rating">
+    <p><i class="fa-solid fa-star text-warning"></i> <%= @result[2]["user_rating"] %>/10</p>
+  </div>
+  <div class="description">
+    <p><%= @result[2]["plot_overview"] %></p>
+  </div>
+  <div>
+  </div>
+</div>
+</div>
