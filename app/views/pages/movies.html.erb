@@ -3,8 +3,8 @@
 
 <div class="d-flex flex-column align-items-center my-4" data-controller="toggle">
 
-    <div data-action="click->toggle#button1" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" style="background-image:url('<%= @result[0]["poster"] %>')">
+    <div data-toggle-target="container1Element" class="row justify-content-center movie-info mb-3">
+      <div class="movie-card col-4" data-action="click->toggle#button1" style="background-image:url('<%= @result[0]["poster"] %>')">
         <%# <div class="placeholder" alt="Placeholder 3"></div> %>
         <div class="d-none play-button" data-toggle-target="play1Element">
           <p><i class="fa-solid fa-play"></i></p>
@@ -25,8 +25,8 @@
       </div>
     </div>
 
-    <div data-action="click->toggle#button2" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" style="background-image:url('<%= @result[1]["poster"] %>')">
+    <div data-toggle-target="container2Element" class="row justify-content-center movie-info mb-3">
+      <div class="movie-card col-4" data-action="click->toggle#button2" style="background-image:url('<%= @result[1]["poster"] %>')">
         <%# <div class="placeholder" alt="Placeholder 3"></div> %>
         <div class="d-none play-button" data-toggle-target="play2Element">
           <p><i class="fa-solid fa-play"></i></p>
@@ -47,8 +47,8 @@
       </div>
     </div>
 
-    <div data-action="click->toggle#button3" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" style="background-image:url('<%= @result[2]["poster"] %>')">
+    <div data-toggle-target="container3Element" class="row justify-content-center movie-info mb-3">
+      <div class="movie-card col-4" data-action="click->toggle#button3" style="background-image:url('<%= @result[2]["poster"] %>')">
         <%# <div class="placeholder" alt="Placeholder 3"></div> %>
         <div class="d-none play-button" data-toggle-target="play3Element">
           <p><i class="fa-solid fa-play"></i></p>
