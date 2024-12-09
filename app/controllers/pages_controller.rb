@@ -27,6 +27,8 @@ class PagesController < ApplicationController
     end
     # @result = result_tt
   end
+  def movie_details
+  end
 end
 
 # {"format"=>"movie", "runtime"=>"60", "genre"=>"1", "period"=>"20240101", "commit"=>"Generate 3 programs"}

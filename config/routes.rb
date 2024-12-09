@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/preferences", to: "pages#preferences", as: :preferences
   get "/preferences/movies", to: "pages#movies", as: :preferences_movies
+  get "/preferences/movie/details", to: "pages#movie_details", as: :movie_details
 end
