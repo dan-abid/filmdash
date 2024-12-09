@@ -18,9 +18,8 @@ export default class extends Controller {
 
   }
 
-  button1 (event) {
+  button1 () {
     // event.target.classList.add("movie-card-dark")
-    event.target.classList.add("movie-dark");
     this.appear1ElementTarget.classList.remove("d-none");
     this.play1ElementTarget.classList.remove("d-none");
     this.container1ElementTarget.classList.remove("justify-content-center");
