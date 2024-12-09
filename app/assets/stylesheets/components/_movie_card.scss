@@ -1,0 +1,85 @@
+.movie-card {
+  width: 97px;
+  /* Fixed width */
+  height: 152px;
+  /* Fixed height */
+  /* Increased vertical margin for spacing */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-card-dark {
+  filter: brightness(50%)
+}
+
+.play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) );
+  background-size: 100%;
+}
+
+.play-button p{
+  font-size: 250%;
+  margin: 0;
+}
+
+.movie-info {
+  width: 85%;
+}
+
+.infos {
+  // background-color: aqua;
+  height: 152px;
+  padding: 0;
+  padding-left: 2%;
+}
+
+.title {
+  // background-color: blueviolet;
+  line-height: 1; /* Éliminer tout padding par défaut */
+}
+
+.title p {
+  margin: 0;         /* Supprimer la marge par défaut du paragraphe */      /* Supprimer le padding du paragraphe */ /* Aligner le texte à gauche */
+}
+
+.rating {
+  // background-color: brown;
+  line-height: 1;
+  margin-top: 2%;
+}
+
+.rating p{
+  margin: 0;
+  font-size: 60%;
+}
+
+.description {
+  // background-color: chartreuse;
+  line-height: 1;
+  // text-align: justify;
+  // word-break: break-all;
+  margin-top: 7%;
+  height: 55.6%;
+  overflow: hidden;
+}
+
+.description p {
+  margin: 0;
+  font-size: 75%;
+}
+
+.moved {
+  display: flex;
+  justify-content: center;
+}

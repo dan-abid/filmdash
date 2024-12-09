@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :user_streaming_services
+  has_many :user_streaming_services, dependent: :destroy
   has_many :streaming_services, through: :user_streaming_services
+  belongs_to :country
 end

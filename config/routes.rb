@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "/preferences", to: "pages#preferences", as: :preferences
+  get "/preferences/movies", to: "pages#movies", as: :preferences_movies
 end
