@@ -257,18 +257,18 @@ countries_array = [
 
 
 streaming_services_array = [
-  {name: "The Criterion Channel", source_id: 366},
-  {name: "Netflix", source_id: 203},
-  {name: "Hulu", source_id: 157},
-  {name: "Max", source_id: 387},
-  {name: "Prime Video", source_id: 26},
-  {name: "Disney+", source_id: 372},
-  {name: "AppleTV+", source_id: 371},
-  {name: "Paramount+", source_id: 444},
-  {name: "Crave", source_id: 393},
-  {name: "Peacock Premium", source_id: 388},
-  {name: "ICI TOU.TV", source_id: 396},
-  {name: "MUBI", source_id: 181}
+  {name: "The Criterion Channel", source_id: 258},
+  {name: "Netflix", source_id: 8},
+  {name: "Hulu", source_id: 15},
+  {name: "HBO Max", source_id: 384},
+  {name: "Amazon Prime Video", source_id: 9},
+  {name: "Disney+", source_id: 337},
+  {name: "AppleTV+", source_id: 350},
+  {name: "Paramount+", source_id: 531},
+  {name: "Crave", source_id: 230},
+  {name: "Peacock Premium", source_id: 386},
+  {name: "ICI TOU.TV", source_id: 146},
+  {name: "MUBI", source_id: 11}
 ]
 sorted_streamings = streaming_services_array.sort_by { |services| services[:name] }
 

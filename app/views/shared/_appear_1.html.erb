@@ -2,10 +2,10 @@
   <p><strong><%= @result[0]["title"] %></strong></p>
 </div>
 <div class="rating">
-  <p><i class="fa-solid fa-star text-warning"></i> <%= @result[0]["user_rating"] %>/10</p>
+  <p><i class="fa-solid fa-star text-warning"></i> <%= @result[0]["vote_average"] %>/10</p>
 </div>
 <div class="description">
-  <p><%= @result[0]["plot_overview"] %></p>
+  <p><%= @result[0]["overview"] %></p>
 </div>
 <div class="d-flex button-gap mt-3">
   <div class="button-get-started"></div>
