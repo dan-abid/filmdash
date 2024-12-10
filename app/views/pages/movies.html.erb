@@ -6,7 +6,7 @@
     <h1>No result</h1>
   <% else %>
     <div data-toggle-target="container1Element" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" data-action="click->toggle#button1" style="background-image:url('<%= @result[0]["poster"] %>')">
+      <div class="movie-card col-4" data-action="click->toggle#button1" style="background-image:url('https://image.tmdb.org/t/p/original<%= @result[0]["poster_path"] %>')">
         <%= render "shared/popup_1" %>
       </div>
       <div data-toggle-target="appear1Element" class="d-none infos d-flex flex-column align-items-start col-8">
@@ -15,7 +15,7 @@
     </div>
 
     <div data-toggle-target="container2Element" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" data-action="click->toggle#button2" style="background-image:url('<%= @result[1]["poster"] %>')">
+      <div class="movie-card col-4" data-action="click->toggle#button2" style="background-image:url('https://image.tmdb.org/t/p/original<%= @result[1]["poster_path"] %>')">
         <%= render "shared/popup_2" %>
       </div>
       <div data-toggle-target="appear2Element" class="d-none infos d-flex flex-column align-items-start col-8">
@@ -24,7 +24,7 @@
     </div>
 
     <div data-toggle-target="container3Element" class="row justify-content-center movie-info mb-3">
-      <div class="movie-card col-4" data-action="click->toggle#button3" style="background-image:url('<%= @result[2]["poster"] %>')">
+      <div class="movie-card col-4" data-action="click->toggle#button3" style="background-image:url('https://image.tmdb.org/t/p/original<%= @result[2]["poster_path"] %>')">
         <%= render "shared/popup_3" %>
       </div>
       <div data-toggle-target="appear3Element" class="d-none infos d-flex flex-column align-items-start col-8">
