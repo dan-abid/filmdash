@@ -22,12 +22,16 @@
       <h5>Runtime</h5>
       <div class="d-flex scrolling">
         <div class="radio-space">
+          <%= f.radio_button :runtime, "0", id: '0' %>
+          <%= f.label :runtime, "1h and less", for: "0" %>
+        </div>
+        <div class="radio-space">
           <%= f.radio_button :runtime, "60", id: '60' %>
-          <%= f.label :runtime, "1h and less", for: "60" %>
+          <%= f.label :runtime, "1h - 2h", for: "120" %>
         </div>
         <div class="radio-space">
           <%= f.radio_button :runtime, "120", id: '120' %>
-          <%= f.label :runtime, "1h - 2h", for: "120" %>
+          <%= f.label :format, "2h - 3h", for: "180" %>
         </div>
         <div class="radio-space">
           <%= f.radio_button :runtime, "180", id: '180' %>
