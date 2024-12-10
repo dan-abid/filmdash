@@ -1,5 +1,6 @@
 UserStreamingService.destroy_all
 StreamingService.destroy_all
+MovieWatchlist.destroy_all
 User.destroy_all
 Country.destroy_all
 
@@ -279,4 +280,12 @@ end
 
 sorted_streamings.each do |service|
   StreamingService.create!(name: service[:name], source_id: service[:source_id])
+end
+
+puts 'Creating Users'
+User.create!(first_name: 'Daniel', last_name: 'Danielson', email: 'daniel@gmail.com', password: '123456', country: Country.first)
+
+puts 'Creating Movie Watchlists'
+User.all.each do |user|
+  MovieWatchlist.create!(title: 'epic movie', user: user)
 end

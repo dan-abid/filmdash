@@ -1,1 +1,14 @@
-Hello
+<h1>Movie Watchlists</h1>
+
+<% @movies.each do |watchlist| %>
+<% if watchlist.movies.each do |movie| %>
+          <li><%= movie.title %> (<%= movie.release_year %>)</li>
+        <% end %>
+  <div class="watchlist">
+    <h1><%= watchlist.title %></h1>
+      </ul>
+    <% else %>
+      <p>No movies in this watchlist.</p>
+    <% end %>
+  </div>
+<% end %>
