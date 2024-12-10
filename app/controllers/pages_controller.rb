@@ -24,12 +24,10 @@ class PagesController < ApplicationController
     result_tt = JSON.parse(response)
     @result_titles = result_tt["titles"].sample(3)
     # raise
-    @result = @result_titles.map do |title|
-      titles_details_parse = RestClient.get "https://api.watchmode.com/v1/title/#{title["imdb_id"]}/details/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&append_to_response=sources"
+    @result = @result_titles.map do |title_infos|
+      titles_details_parse = RestClient.get "https://api.watchmode.com/v1/title/#{title_infos["imdb_id"]}/details/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&append_to_response=sources"
       JSON.parse(titles_details_parse)
     end
-
-
     # @result = result_tt
   end
 end
