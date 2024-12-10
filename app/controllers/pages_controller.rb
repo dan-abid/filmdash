@@ -19,18 +19,8 @@ class PagesController < ApplicationController
     @release_date_start = params[:period]
     @runtime_min = params[:runtime]
     @genre = params[:genre]
-    # request_url = build_tmdb_url
+
     request_url = build_tmdb_url
-
-    # http = Net::HTTP.new(url.host, url.port)
-    # http.use_ssl = true
-
-    # request = Net::HTTP::Get.new(url)
-    # request["accept"] = 'application/json'
-    # request["Authorization"] = "Bearer #{ENV["API_KEY_TMDB"]}"
-
-    # response = http.request(request)
-    # reponse_body = JSON.parse(response.read_body)
     request_headers = {
       Authorization: "Bearer #{ENV["API_KEY_TMDB"]}",
       accept: "application/JSON"
@@ -39,6 +29,11 @@ class PagesController < ApplicationController
     result_tt = JSON.parse(response)
 
     @result = result_tt["results"].sample(3)
+
+    @result_link_movie = @result.map do |title|
+      title_parse = RestClient.get("https://api.themoviedb.org/3/movie/#{title["id"]}/watch/providers", request_headers)
+      result_links = JSON.parse(title_parse)
+    end
     # raise
     # seed ={}
     # url = "https://api.watchmode.com/v1/list-titles/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&types=#{params[:format]}&source_ids=#{@streaming_services_ids}&source_types=sub&region=#{@country}&genres=#{params[:genre]}&release_date_start=#{params[:period]}&release_date_end=#{@release_date_end_s}&critic_score_low=8&limit=250"
