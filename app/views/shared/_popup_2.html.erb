@@ -10,13 +10,7 @@
           <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
         </div>
         <div class="modal-body mt-5 d-flex justify-content-center stream-body">
-          <% @result[1]["sources"].each do |source| %>
-            <% @streaming_services.each do |streaming_service| %>
-              <% if (streaming_service.source_id == source["source_id"]) && (@country == source["region"]) %>
-                <%= link_to source["name"], source["web_url"], target: :_blank %>
-              <% end %>
-            <% end %>
-          <% end %>
+
         </div>
       </div>
     </div>
