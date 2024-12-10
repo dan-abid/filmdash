@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_06_182500) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_032918) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_182500) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_watchlists", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.date "release_date"
+    t.string "movie_poster"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_movie_watchlists_on_user_id"
+  end
+
+  create_table "streaming_links", force: :cascade do |t|
+    t.string "name"
+    t.string "link"
+    t.bigint "movie_watchlist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_watchlist_id"], name: "index_streaming_links_on_movie_watchlist_id"
   end
 
   create_table "streaming_services", force: :cascade do |t|
@@ -54,6 +75,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_06_182500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "movie_watchlists", "users"
+  add_foreign_key "streaming_links", "movie_watchlists"
   add_foreign_key "user_streaming_services", "streaming_services"
   add_foreign_key "user_streaming_services", "users"
   add_foreign_key "users", "countries"
