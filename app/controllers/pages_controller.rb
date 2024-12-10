@@ -15,9 +15,10 @@ class PagesController < ApplicationController
     @vpn = current_user.vpn
     @country = current_user.country.code
     @streaming_services = current_user.streaming_services
-    @streaming_services_ids = @streaming_services.map { |streaming| streaming.source_id }.join(',')
+    @streaming_services_ids = @streaming_services.map { |streaming| streaming.source_id }.join('|')
     @release_date_start = params[:period]
-
+    @runtime_max = params[:runtime]
+    @genre = params[:genre]
     # request_url = build_tmdb_url
     request_url = build_tmdb_url
 
@@ -65,14 +66,14 @@ class PagesController < ApplicationController
       include_video: false,
       page: 1,
       sort_by: "popularity.desc",
-      watch_region: "CA",
-      "primary_release_date.gte" => "2000-01-01",
+      watch_region: "#{@country}",
+      "primary_release_date.gte" => "#{@release_date_start}",
       with_watch_monetization_types: "flatrate",
-      with_watch_providers: "384|258|8",
-      "with_runtime.lte" => 120,
-      with_genres: 12,
-      "primary_release_date.lte" => "2020-01-01",
-      "with_runtime.gte" => 60,
+      with_watch_providers: "#{@streaming_services_ids}",
+      "with_runtime.lte" => "#{@runtime_max}",
+      with_genres: "#{@genre}",
+      "primary_release_date.lte" => "#{Date.parse(@release_date_start).advance(years: 10).strftime("%Y-%m-%d")}",
+      "with_runtime.gte" => "#{@runtime_max.to_i - 60}",
       "vote_average.gte" => 7
     }
     return "#{base_url}?#{params.map { |key, value| "#{key}=#{value}" }.join('&')}"
