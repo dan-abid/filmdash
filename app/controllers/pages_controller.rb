@@ -41,6 +41,8 @@ class PagesController < ApplicationController
       response = RestClient.get(request_url, request_headers)
       result_tt = JSON.parse(response)
       @result = result_tt["results"].sample(3)
+      session[:movie_ids] = @result.map { |movie| movie["id"] }
+
       @result_link_movie = @result.map do |title|
         title_parse = RestClient.get("https://api.themoviedb.org/3/movie/#{title["id"]}/watch/providers", request_headers)
         result_links = JSON.parse(title_parse)
@@ -63,6 +65,20 @@ class PagesController < ApplicationController
     #   JSON.parse(titles_details_parse)
     # end
     # @result = result_tt
+  end
+
+  def selection_details
+    request_headers = {
+      Authorization: "Bearer #{ENV["API_KEY_TMDB"]}",
+      accept: "application/JSON"
+      }
+    url_movie_detail =
+    movie_ids = session[:movie_ids]
+
+    @movie_details = movie_ids.each do |movie_id|
+
+      response = RestClient.get(request_url, request_headers)
+    end
   end
 
   private

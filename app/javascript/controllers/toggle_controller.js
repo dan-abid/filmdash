@@ -24,7 +24,7 @@ export default class extends Controller {
   }
 
   handleOutsideClick(event) {
-    // Vérifier si l'élément cliqué est en dehors des éléments que nous voulons fermer
+
     if (
       !this.container1ElementTarget.contains(event.target) &&
       !this.container2ElementTarget.contains(event.target) &&
