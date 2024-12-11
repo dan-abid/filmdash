@@ -8,9 +8,23 @@ class MovieWatchlistsController < ApplicationController
   end
 
   def add
-    @movie_watchlist = MovieWatchlist.new(movie_params)
+    output = params
+      @movie_watchlist = MovieWatchlist.new(
+        title: output[:title],
+        user: current_user,
+        movie_poster: output[:poster_path],
+        description: output[:overview],
+        release_date: Date.parse(output[:release_date]),
+        rating: output[:vote_average]
+      )
     if @movie_watchlist.save
-      streaming_link = StreamingLink.new()
+      output[:watch_providers].each do |provider|
+        StreamingLink.create!(
+          name: provider[:provider_name],
+          link: output[:streaming_link],
+          movie_watchlist: @movie_watchlist
+        )
+      end
       redirect_to @movie_watchlist
     else
       render :new

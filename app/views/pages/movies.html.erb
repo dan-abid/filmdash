@@ -8,6 +8,7 @@
   <% else %>
     <% @results.each do |movie_result| %>
       <%= render "result_movie", result: movie_result  %>
+      <%raise%>
     <% end %>
 
   <% end %>
