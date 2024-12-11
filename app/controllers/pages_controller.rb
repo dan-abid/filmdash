@@ -34,6 +34,7 @@ class PagesController < ApplicationController
       title_parse = RestClient.get("https://api.themoviedb.org/3/movie/#{title["id"]}/watch/providers", request_headers)
       result_links = JSON.parse(title_parse)
     end
+
     # raise
     # seed ={}
     # url = "https://api.watchmode.com/v1/list-titles/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&types=#{params[:format]}&source_ids=#{@streaming_services_ids}&source_types=sub&region=#{@country}&genres=#{params[:genre]}&release_date_start=#{params[:period]}&release_date_end=#{@release_date_end_s}&critic_score_low=8&limit=250"
