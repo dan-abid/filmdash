@@ -30,7 +30,8 @@ class PagesController < ApplicationController
       request_url = build_tmdb_url_series
       response = RestClient.get(request_url, request_headers)
       result_tt = JSON.parse(response)
-      @result = result_tt["results"].sample(3)
+      @result_ids = result_tt["results"].sample(3).map { |movie| movie["id"] }
+      @results = []
 
       @result_link_movie = @result.map do |title|
         title_parse = RestClient.get("https://api.themoviedb.org/3/tv/#{title["id"]}/watch/providers", request_headers)
@@ -40,11 +41,14 @@ class PagesController < ApplicationController
       request_url = build_tmdb_url_movies
       response = RestClient.get(request_url, request_headers)
       result_tt = JSON.parse(response)
-      @result = result_tt["results"].sample(3)
-      @result_link_movie = @result.map do |title|
-        title_parse = RestClient.get("https://api.themoviedb.org/3/movie/#{title["id"]}/watch/providers", request_headers)
-        result_links = JSON.parse(title_parse)
+      @result_ids = result_tt["results"].sample(3).map { |movie| movie["id"] }
+
+      @results = @result_ids.map do |result_id|
+        details_serialized = RestClient.get("https://api.themoviedb.org/3/movie/#{result_id}?append_to_response=videos,watch/providers", request_headers)
+        details = JSON.parse(details_serialized)
+        prepare_result(details)
       end
+
     end
 
     # raise
@@ -108,6 +112,16 @@ class PagesController < ApplicationController
       "vote_average.gte" => 7
     }
     return "#{base_url}?#{params.map { |key, value| "#{key}=#{value}" }.join('&')}"
+  end
+
+  def prepare_result(full_results)
+    final_result = full_results.slice("backdrop_path", "id", "overview", "poster_path", "release_date", "title", "vote_average", "runtime")
+    final_result["genre"] = @genre
+    watch_providers = full_results["watch/providers"]["results"][@country]
+    final_result["streaming_link"] = watch_providers["link"]
+    final_result["watch_providers"] = watch_providers["flatrate"]
+    final_result["trailer_youtube_key"] = full_results["videos"]["results"].find { |video| video["type"].downcase == "trailer" && video["site"].downcase == "youtube" }["key"]
+    final_result
   end
 end
 
