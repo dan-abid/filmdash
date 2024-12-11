@@ -1,15 +1,15 @@
-<h1>Your Watchlist</h1>
+<h1>Watchlist</h1>
 
 <% if @movie_watchlists.any? %>
-  <ul>
+  <div class="watchlist-grid">
     <% @movie_watchlists.each do |movie_watchlist| %>
-      <li>
-        <%= link_to movie_watchlist_path(movie_watchlist) do %>
-          <h1><%= movie_watchlist.title %> (<%= movie_watchlist.release_date %>)</h1>
+      <div class="movie-card" style="background-image:url('<%= movie_watchlist.poster_url %>');">
+        <%= link_to watchlist_movie_path(movie_watchlist), class: "movie-link" do %>
+
         <% end %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
-  <p>Your watchlist is empty.</p>
+  <p class="empty-watchlist-message">Your watchlist is empty.</p>
 <% end %>
