@@ -18,24 +18,24 @@
       </div>
     </div>
 
-    <div class="section mt-5 container">
+    <div class="section mt-5">
       <h5>Runtime</h5>
       <div class="d-flex scrolling">
-        <div class="radio-space">
-          <%= f.radio_button :runtime, "0", id: '0' %>
-          <%= f.label :runtime, "1h and less", for: "0" %>
+        <div class="radio-space" id="onehour-img">
+          <%= f.radio_button :runtime, "90", id: '90' %>
+          <%= f.label :runtime, "1h30 Max", for: "90" %>
         </div>
-        <div class="radio-space">
-          <%= f.radio_button :runtime, "60", id: '60' %>
-          <%= f.label :runtime, "1h - 2h", for: "120" %>
-        </div>
-        <div class="radio-space">
+        <div class="radio-space" id="twohour-img">
           <%= f.radio_button :runtime, "120", id: '120' %>
-          <%= f.label :format, "2h - 3h", for: "180" %>
+          <%= f.label :runtime, "2h Max", for: "120" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="threehour-img">
           <%= f.radio_button :runtime, "180", id: '180' %>
-          <%= f.label :format, "3h and more", for: "180" %>
+          <%= f.label :format, "3h max", for: "120" %>
+        </div>
+        <div class="radio-space" id="fourhour-img">
+          <%= f.radio_button :runtime, "240", id: '240' %>
+          <%= f.label :format, "3h and more", for: "240" %>
         </div>
       </div>
     </div>
@@ -79,43 +79,39 @@
           <%= f.radio_button :genre, "14", id: '14' %>
           <%= f.label :genre, "Fantasy", for: "14" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="history-img">
           <%= f.radio_button :genre, "36", id: '36' %>
           <%= f.label :genre, "History", for: "36" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="horror-img">
           <%= f.radio_button :genre, "27", id: '27' %>
           <%= f.label :genre, "Horror", for: "27" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="music-img">
           <%= f.radio_button :genre, "10402", id: '10402' %>
           <%= f.label :genre, "Music", for: "10402" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="mystery-img">
           <%= f.radio_button :genre, "9648", id: '9648' %>
           <%= f.label :genre, "Mystery", for: "9648" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="romance-img">
           <%= f.radio_button :genre, "10749", id: '10749' %>
           <%= f.label :genre, "Romance", for: "10749" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="science-img">
           <%= f.radio_button :genre, "878", id: '878' %>
           <%= f.label :genre, "Science Fiction", for: "878" %>
         </div>
-        <div class="radio-space">
-          <%= f.radio_button :genre, "10770", id: '10770' %>
-          <%= f.label :genre, "TV Movie", for: "10770" %>
-        </div>
-        <div class="radio-space">
+        <div class="radio-space" id="thriller-img">
           <%= f.radio_button :genre, "53", id: '53' %>
           <%= f.label :genre, "Thriller", for: "53" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="war-img">
           <%= f.radio_button :genre, "10752", id: '10752' %>
           <%= f.label :genre, "War", for: "10752" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="western-img">
           <%= f.radio_button :genre, "37", id: '37' %>
           <%= f.label :genre, "Western", for: "37" %>
         </div>
@@ -125,51 +121,51 @@
     <div class="section mt-5 container">
       <h5>Period</h5>
       <div class="d-flex scrolling">
-        <div class="radio-space">
+        <div class="radio-space" id="thisyear-img">
           <%= f.radio_button :period, "2024-01-01", id: '2024-01-01' %>
           <%= f.label :period, "This year", for: "2024-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="2020-img">
           <%= f.radio_button :period, "2020-01-01", id: '2020-01-01' %>
           <%= f.label :period, "2020's", for: "2020-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="2010-img">
           <%= f.radio_button :period, "2010-01-01", id: '2010-01-01' %>
           <%= f.label :period, "2010's", for: "2010-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="2000-img">
           <%= f.radio_button :period, "2000-01-01", id: '2000-01-01' %>
           <%= f.label :period, "2000's", for: "2000-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1990-img">
           <%= f.radio_button :period, "1990-01-01", id: '1990-01-01' %>
           <%= f.label :period, "1990's", for: "1990-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1980-img">
           <%= f.radio_button :period, "1980-01-01", id: '1980-01-01' %>
           <%= f.label :period, "1980's", for: "1980-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1970-img">
           <%= f.radio_button :period, "1970-01-01", id: '1970-01-01' %>
           <%= f.label :period, "1970's", for: "1970-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1960-img">
           <%= f.radio_button :period, "1960-01-01", id: '1960-01-01' %>
           <%= f.label :period, "1960's", for: "1960-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1950-img">
           <%= f.radio_button :period, "1950-01-01", id: '1950-01-01' %>
           <%= f.label :period, "1950's", for: "1950-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1940-img">
           <%= f.radio_button :period, "1940-01-01", id: '1940-01-01' %>
           <%= f.label :period, "1940's", for: "1940-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1930-img">
           <%= f.radio_button :period, "1930-01-01", id: '1930-01-01' %>
           <%= f.label :period, "1930's", for: "1930-01-01" %>
         </div>
-        <div class="radio-space">
+        <div class="radio-space" id="1920-img">
           <%= f.radio_button :period, "1920-01-01", id: '1920-01-01' %>
           <%= f.label :period, "1920's", for: "1920-01-01" %>
         </div>

@@ -19,26 +19,34 @@ class PagesController < ApplicationController
     @release_date_start = params[:period]
     @runtime_min = params[:runtime]
     @genre = params[:genre]
-    # request_url = build_tmdb_url
-    request_url = build_tmdb_url
+    @format = params[:format]
 
-    # http = Net::HTTP.new(url.host, url.port)
-    # http.use_ssl = true
-
-    # request = Net::HTTP::Get.new(url)
-    # request["accept"] = 'application/json'
-    # request["Authorization"] = "Bearer #{ENV["API_KEY_TMDB"]}"
-
-    # response = http.request(request)
-    # reponse_body = JSON.parse(response.read_body)
     request_headers = {
       Authorization: "Bearer #{ENV["API_KEY_TMDB"]}",
       accept: "application/JSON"
-    }
-    response = RestClient.get(request_url, request_headers)
-    result_tt = JSON.parse(response)
+      }
 
-    @result = result_tt["results"].sample(3)
+    if params[:format] == "tv_series"
+      request_url = build_tmdb_url_series
+      response = RestClient.get(request_url, request_headers)
+      result_tt = JSON.parse(response)
+      @result = result_tt["results"].sample(3)
+
+      @result_link_movie = @result.map do |title|
+        title_parse = RestClient.get("https://api.themoviedb.org/3/tv/#{title["id"]}/watch/providers", request_headers)
+        result_links = JSON.parse(title_parse)
+      end
+    else
+      request_url = build_tmdb_url_movies
+      response = RestClient.get(request_url, request_headers)
+      result_tt = JSON.parse(response)
+      @result = result_tt["results"].sample(3)
+      @result_link_movie = @result.map do |title|
+        title_parse = RestClient.get("https://api.themoviedb.org/3/movie/#{title["id"]}/watch/providers", request_headers)
+        result_links = JSON.parse(title_parse)
+      end
+    end
+
     # raise
     # seed ={}
     # url = "https://api.watchmode.com/v1/list-titles/?apiKey=#{ENV["API_KEY_WATCHMODE"]}&types=#{params[:format]}&source_ids=#{@streaming_services_ids}&source_types=sub&region=#{@country}&genres=#{params[:genre]}&release_date_start=#{params[:period]}&release_date_end=#{@release_date_end_s}&critic_score_low=8&limit=250"
@@ -57,9 +65,12 @@ class PagesController < ApplicationController
     # @result = result_tt
   end
 
+  def details
+  end
+
   private
 
-  def build_tmdb_url
+  def build_tmdb_url_movies
     base_url = "https://api.themoviedb.org/3/discover/movie"
     params = {
       include_adult: false,
@@ -70,10 +81,30 @@ class PagesController < ApplicationController
       "primary_release_date.gte" => "#{@release_date_start}",
       with_watch_monetization_types: "flatrate",
       with_watch_providers: "#{@streaming_services_ids}",
-      "with_runtime.gte" => "#{@runtime_min}",
+      "with_runtime.lte" => "#{@runtime_min}",
       with_genres: "#{@genre}",
       "primary_release_date.lte" => "#{Date.parse(@release_date_start).advance(years: 10).strftime("%Y-%m-%d")}",
-      "with_runtime.lte" => "#{@runtime_min.to_i + 60}",
+      # "with_runtime.lte" => "#{@runtime_min.to_i + 60}",
+      "vote_average.gte" => 7
+    }
+    return "#{base_url}?#{params.map { |key, value| "#{key}=#{value}" }.join('&')}"
+  end
+
+  def build_tmdb_url_series
+    base_url = "https://api.themoviedb.org/3/discover/tv"
+    params = {
+      include_adult: false,
+      # include_null_first_air_dates: false,
+      page: 1,
+      sort_by: "popularity.desc",
+      watch_region: "#{@country}",
+      "first_air_date.gte" => "#{@release_date_start}",
+      with_watch_monetization_types: "flatrate",
+      with_watch_providers: "#{@streaming_services_ids}",
+      # "with_runtime.gte" => "#{@runtime_min}",
+      with_genres: "#{@genre}",
+      "first_air_date.lte" => "#{Date.parse(@release_date_start).advance(years: 10).strftime("%Y-%m-%d")}",
+      # "with_runtime.lte" => "#{@runtime_min.to_i + 60}",
       "vote_average.gte" => 7
     }
     return "#{base_url}?#{params.map { |key, value| "#{key}=#{value}" }.join('&')}"

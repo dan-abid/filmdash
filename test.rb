@@ -81,7 +81,7 @@ require "rest-client"
 </div>
 
 
-<% @result[0]["sources"].each do |source| %>
+          <% @result[0]["sources"].each do |source| %>
             <% @streaming_services.each do |streaming_service| %>
               <% if (streaming_service.source_id == source["source_id"]) && (@country == source["region"]) %>
                 <%= link_to source["name"], source["web_url"], target: :_blank %>
