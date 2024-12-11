@@ -1,23 +1,26 @@
-
+  <div class="top-image" style="background-image: url('https://image.tmdb.org/t/p/original<%= movie["backdrop_path"] %>')">
+    <!-- Placeholder for the image -->
+  </div>
   <div class="details-page">
-    <div class="top-image" style="background-image: url('https://image.tmdb.org/t/p/original<%= movie["backdrop_path"] %>')">
-      <!-- Placeholder for the image -->
-    </div>
 
     <div class="info-section">
-      <div class="row">
-        <div class="col left-column">
-          <p class="movie-title"><%= movie["title"] %></p>
-          <p><%= Date.parse(movie["release_date"]).year %> <%= movie["runtime"] %></p>
-          <p><%= @genre %></p>
+      <div class="row justify-content-between">
+        <div class="col-4 title-section align-items-start">
+          <p class="movie-title "><%= movie["title"] %></p>
+          <div class="d-flex d-block gap-1" >
+            <p><%= Date.parse(movie["release_date"]).year %></p>
+            <p>-</p>
+            <p><%= movie["runtime"] %></p>
+            <p>min</p>
+          </div>
         </div>
 
 
-        <div class="col middle-column">
-          <p>Rating: <%= movie["vote_average"] %>/10</p>
+        <div class="col-4" style="font-size: 85%;">
+          <p><i class="fa-solid fa-star text-warning"></i> <%= movie["vote_average"] %><strong>/10</strong></p>
         </div>
 
-        <div class="col right-column">
+        <div class="col-4">
           <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/original<%= movie["poster_path"] %>')">
             <!-- Placeholder for the movie card -->
           </div>
@@ -27,11 +30,14 @@
 
 
     <div class="movie-description-section">
-      <p><strong>Description:</strong><%= movie["overview"] %></p>
+      <p><strong>Overview: </strong><%= movie["overview"] %></p>
     </div>
 
-
-
+    <div class="trailer mb-5 text-center" style="background-image:url('https://img.youtube.com/vi/<%= movie["trailer_youtube_key"] %>/maxresdefault.jpg');">
+      <%= link_to "<i class='fa-solid fa-play'></i>".html_safe, "https://www.youtube.com/watch?v=#{movie["trailer_youtube_key"]}", target: "_blank" %>
+    </div>
+<%# https://www.youtube.com/watch?v= %>
+<%# https://img.youtube.com/vi/#{movie["trailer_youtube_key"]}maxresdefault.jpg %>
 
     <%# <div class="add-to-watchlist-container">
       <button class="add-to-watchlist-button">Add to Watchlist</button>
