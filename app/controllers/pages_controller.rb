@@ -78,10 +78,10 @@ class PagesController < ApplicationController
       "primary_release_date.gte" => "#{@release_date_start}",
       with_watch_monetization_types: "flatrate",
       with_watch_providers: "#{@streaming_services_ids}",
-      "with_runtime.gte" => "#{@runtime_min}",
+      "with_runtime.lte" => "#{@runtime_min}",
       with_genres: "#{@genre}",
       "primary_release_date.lte" => "#{Date.parse(@release_date_start).advance(years: 10).strftime("%Y-%m-%d")}",
-      "with_runtime.lte" => "#{@runtime_min.to_i + 60}",
+      # "with_runtime.lte" => "#{@runtime_min.to_i + 60}",
       "vote_average.gte" => 7
     }
     return "#{base_url}?#{params.map { |key, value| "#{key}=#{value}" }.join('&')}"
