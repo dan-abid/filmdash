@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get "/preferences/movies", to: "pages#movies", as: :preferences_movies
   get "/watchlist", to: "movie_watchlists#index", as: :watchlist
   get "/watchlist/:id", to: "movie_watchlists#show", as: :watchlist_movie
+  get 'details', to: 'pages#details'
 end
