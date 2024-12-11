@@ -1,7 +1,17 @@
 <h1>This is the show page of the movie_watchlist. Please style me at a later time</h1>
 
-<h2>Title: <%= @movie_watchlist.title%></h2>
+<div class= "container">
+  <div class="row">
+    <div class="col-6">
+      <img src="https://support.musicgateway.com/wp-content/uploads/2021/05/what-is-a-movie-poster-collage.png"<%= @movie_watchlist.movie_poster%>" img class='picture'">
+    </div>
+    <div class="col-6">
+    </div>
+  </div>
 <h3>Description: <%= @movie_watchlist.description%></h3>
 <h3>Release_date: <%= @movie_watchlist.release_date%></h3>
 <h3>Movie_poster: <%= @movie_watchlist.movie_poster%></h3>
 <h3>Rating: <%= @movie_watchlist.rating%></h3>
+<h2>Title: <%= @movie_watchlist.title%></h2>
+      <h3>Rating: <%= @movie_watchlist.rating%></h3>
+      <h3>Release_date: <%= @movie_watchlist.release_date%></h3>
