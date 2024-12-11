@@ -1,0 +1,15 @@
+<h1>Your Watchlist</h1>
+
+<% if @movie_watchlists.any? %>
+  <ul>
+    <% @movie_watchlists.each do |movie_watchlist| %>
+      <li>
+        <%= link_to movie_watchlist_path(movie_watchlist) do %>
+          <h1><%= movie_watchlist.title %> (<%= movie_watchlist.release_date %>)</h1>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Your watchlist is empty.</p>
+<% end %>
