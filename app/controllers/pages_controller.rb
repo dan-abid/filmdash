@@ -67,18 +67,7 @@ class PagesController < ApplicationController
     # @result = result_tt
   end
 
-  def selection_details
-    request_headers = {
-      Authorization: "Bearer #{ENV["API_KEY_TMDB"]}",
-      accept: "application/JSON"
-      }
-    url_movie_detail =
-    movie_ids = session[:movie_ids]
-
-    @movie_details = movie_ids.each do |movie_id|
-
-      response = RestClient.get(request_url, request_headers)
-    end
+  def details
   end
 
   private
