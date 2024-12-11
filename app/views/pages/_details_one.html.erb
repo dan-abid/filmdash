@@ -1,0 +1,39 @@
+
+  <div class="details-page">
+    <div class="top-image" style="background-image: url('https://image.tmdb.org/t/p/original<%= movie["backdrop_path"] %>')">
+      <!-- Placeholder for the image -->
+    </div>
+
+    <div class="info-section">
+      <div class="row">
+        <div class="col left-column">
+          <p class="movie-title"><%= movie["title"] %></p>
+          <p><%= Date.parse(movie["release_date"]).year %> <%= movie["runtime"] %></p>
+          <p><%= @genre %></p>
+        </div>
+
+
+        <div class="col middle-column">
+          <p>Rating: <%= movie["vote_average"] %>/10</p>
+        </div>
+
+        <div class="col right-column">
+          <div class="movie-card" style="background-image: url('https://image.tmdb.org/t/p/original<%= movie["poster_path"] %>')">
+            <!-- Placeholder for the movie card -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="movie-description-section">
+      <p><strong>Description:</strong><%= movie["overview"] %></p>
+    </div>
+
+
+
+
+    <%# <div class="add-to-watchlist-container">
+      <button class="add-to-watchlist-button">Add to Watchlist</button>
+    </div> %>
+  </div>
