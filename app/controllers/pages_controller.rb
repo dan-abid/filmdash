@@ -65,6 +65,9 @@ class PagesController < ApplicationController
     # @result = result_tt
   end
 
+  def details
+  end
+
   private
 
   def build_tmdb_url_movies
