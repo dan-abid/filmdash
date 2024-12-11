@@ -1,11 +1,16 @@
-<h1>Your Watchlist</h1>
+<h1 class="title">Your Watchlist</h1>
 
 <% if @movie_watchlists.any? %>
+<div class="movie-image-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
   <ul>
     <% @movie_watchlists.each do |movie_watchlist| %>
       <li>
         <%= link_to movie_watchlist_path(movie_watchlist) do %>
-          <h1><%= movie_watchlist.title %> (<%= movie_watchlist.release_date %>)</h1>
+          <h1><%= movie_watchlist.movie_poster %></h1>
         <% end %>
       </li>
     <% end %>

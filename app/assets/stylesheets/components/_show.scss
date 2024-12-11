@@ -1,12 +1,15 @@
-.background color {
-  background-color: #003366;
-  height: 35%;
+.title{
+  text-align: center;
 }
 
-.stream-body {
-  height: 15%;
-  width: 80%;
-  flex-wrap: wrap;
-  gap: 5% 10%;
-  font-size: 70%;
+.movie-image-container {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.movie-image-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
 }
