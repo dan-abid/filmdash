@@ -4,16 +4,15 @@
   align-items: center;
   background-color: $dark-dark-grey;
   color: $white;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
 .top-image {
   width: 100%;
-  height: 25vh;
+  height: 23vh;
   // background-color: $dark-grey;
   /* Placeholder color */
-  margin-bottom: 20px;
   background-size: 100%;
   object-fit: cover;
   background-position: center;
@@ -25,7 +24,7 @@
   justify-content: space-between;
   width: 100%;
   height: 25vh;
-  padding: 20px;
+  padding: 10px;
   flex-wrap: nowrap;
 
 }
@@ -73,13 +72,12 @@
 .movie-description-section {
   padding: 10px;
   width: 100%;
-  margin-top: 80px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
 }
 
 .movie-description-section p {
-  margin: 5px 0;
+  font-size: 80%;
 }
 
 .add-to-watchlist-container {
@@ -107,4 +105,26 @@
   background-color: $black;
   color: $white;
   box-shadow: 0 6px 8px $transparent-dark-grey;
+}
+
+.title-section {
+  font-size: 85%;
+}
+
+.trailer {
+  width: 80%;
+}
+
+.trailer {
+  width: 80%;
+  height: 150%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  background-position: center;
+
+}
+
+.trailer i {
+  font-size: 350%;
 }

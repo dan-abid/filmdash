@@ -1,8 +1,10 @@
+StreamingLink.destroy_all
 UserStreamingService.destroy_all
 StreamingService.destroy_all
 MovieWatchlist.destroy_all
 User.destroy_all
 Country.destroy_all
+
 
 countries_array = [
   {name: "Afghanistan", code: "AF"},
@@ -272,8 +274,6 @@ streaming_services_array = [
 ]
 sorted_streamings = streaming_services_array.sort_by { |services| services[:name] }
 
-
-
 countries_array.each do |pays|
   Country.create!(name: pays[:name], code: pays[:code])
 end
@@ -282,10 +282,157 @@ sorted_streamings.each do |service|
   StreamingService.create!(name: service[:name], source_id: service[:source_id])
 end
 
-puts 'Creating Users'
-User.create!(first_name: 'Daniel', last_name: 'Danielson', email: 'daniel@gmail.com', password: '123456', country: Country.first)
+def create_user(first_name)
+  puts "Created #{first_name} to login use: #{first_name}@gmail.com password: 123456"
+  user = User.new(first_name: first_name, last_name: 'last_name', email:  "#{first_name}@gmail.com", password: '123456')
+  user.country = Country.find_by(name: 'Canada')
+  StreamingService.all.each do |service|
+    user.streaming_services << service
+  end
+  return user.save!
+end
+
+danial = create_user('danial')
+david = create_user('david')
+heather = create_user('heather')
 
 puts 'Creating Movie Watchlists'
+watchlist_api_output = [
+  {
+  "backdrop_path": "/kti9ufHhCKaOLjg2to4RKfrlkmh.jpg",
+  "id": 1263421,
+  "overview": "It's the ultimate showdown. The toughest fighters from \"Baki Hanma\" and \"Kengan Ashura\" clash in this unprecedented, hard-hitting martial arts crossover.",
+  "poster_path": "/etbHJxil0wHvYOCmibzFLsMcl2C.jpg",
+  "release_date": "2024-06-05",
+  "title": "Baki Hanma VS Kengan Ashura",
+  "vote_average": 7.585,
+  "runtime": 60,
+  "genre": "28",
+  "streaming_link": "https://www.themoviedb.org/movie/1263421-vs/watch?locale=CA",
+  "watch_providers": [
+    {
+      "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+      "provider_id": 8,
+      "provider_name": "Netflix",
+      "display_priority": 0
+    },
+    {
+      "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+      "provider_id": 1796,
+      "provider_name": "Netflix basic with Ads",
+      "display_priority": 110
+    }
+  ],
+  "trailer_youtube_key": "nWMbcamVl7Y"
+},
+{
+  "backdrop_path": "/nL0q3UcNj4MOMluIUE42bc7PtW0.jpg",
+  "id": 1280768,
+  "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration; but the festivities are cut short when an old nemesis from Myrtle's secret agent past appears on the island.",
+  "poster_path": "/mh4Mk95u7fdY4D4t5kRGQpQbVFy.jpg",
+  "release_date": "2024-06-21",
+  "title": "No Time to Spy: A Loud House Movie",
+  "vote_average": 7.1,
+  "runtime": 81,
+  "genre": "28",
+  "streaming_link": "https://www.themoviedb.org/movie/1280768-no-time-to-spy-a-loud-house-movie/watch?locale=CA",
+  "watch_providers": [
+    {
+      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
+      "provider_id": 531,
+      "provider_name": "Paramount Plus",
+      "display_priority": 11
+    },
+    {
+      "logo_path": "/hExO4PtimLIYn3kBOrzsejNv7cT.jpg",
+      "provider_id": 582,
+      "provider_name": "Paramount+ Amazon Channel",
+      "display_priority": 13
+    },
+    {
+      "logo_path": "/djTJ7pAkIhmPaN3eTA6wTUrphNG.jpg",
+      "provider_id": 606,
+      "provider_name": "StackTV Amazon Channel",
+      "display_priority": 78
+    },
+    {
+      "logo_path": "/9BgaNQRMDvVlji1JBZi6tcfxpKx.jpg",
+      "provider_id": 257,
+      "provider_name": "fuboTV",
+      "display_priority": 96
+    },
+    {
+      "logo_path": "/tJqmTmQ8jp9WfyaZfApHK8lSywA.jpg",
+      "provider_id": 1853,
+      "provider_name": "Paramount Plus Apple TV Channel ",
+      "display_priority": 116
+    },
+    {
+      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
+      "provider_id": 2303,
+      "provider_name": "Paramount Plus Premium",
+      "display_priority": 166
+    },
+    {
+      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
+      "provider_id": 2304,
+      "provider_name": "Paramount Plus Basic with Ads",
+      "display_priority": 167
+    }
+  ],
+  "trailer_youtube_key": "3gPGMqXUFl0"
+},
+{
+  "backdrop_path": "/6SLyu9ygASsrOqkCpjAwtyG9PWW.jpg",
+  "id": 1094556,
+  "overview": "Twins Phoebe and Max are enjoying their superhero lifestyle, but when one 'save' goes awry, the Thundermans are sent back to Hiddenville. While Hank and Barb enjoy their return, and Billy and Nora look forward to a normal high school life, Max and Phoebe are determined to regain their superhero status.",
+  "poster_path": "/bzFY5gwXOS6WWxQiSeofi1Qa62x.jpg",
+  "release_date": "2024-03-07",
+  "title": "The Thundermans Return",
+  "vote_average": 7.1,
+  "runtime": 70,
+  "genre": "28",
+  "streaming_link": "https://www.themoviedb.org/movie/1094556-the-thundermans-return/watch?locale=CA",
+  "watch_providers": [
+    {
+      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
+      "provider_id": 531,
+      "provider_name": "Paramount Plus",
+      "display_priority": 11
+    },
+    {
+      "logo_path": "/hExO4PtimLIYn3kBOrzsejNv7cT.jpg",
+      "provider_id": 582,
+      "provider_name": "Paramount+ Amazon Channel",
+      "display_priority": 13
+    },
+    {
+      "logo_path": "/tJqmTmQ8jp9WfyaZfApHK8lSywA.jpg",
+      "provider_id": 1853,
+      "provider_name": "Paramount Plus Apple TV Channel ",
+      "display_priority": 116
+    },
+    {
+      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
+      "provider_id": 2303,
+      "provider_name": "Paramount Plus Premium",
+      "display_priority": 166
+    },
+    {
+      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
+      "provider_id": 2304,
+      "provider_name": "Paramount Plus Basic with Ads",
+      "display_priority": 167
+    }
+  ],
+  "trailer_youtube_key": "gYA5WOFhd-Y"
+}
+]
 User.all.each do |user|
-  MovieWatchlist.create!(title: 'epic movie', user: user)
+  watchlist_api_output.each do |output|
+    movie_watchlist = MovieWatchlist.create!(title: output[:title], user: user, movie_poster: output[:poster_path], description: output[:overview], release_date: Date.parse(output[:release_date]), rating: output[:vote_average])
+    output[:watch_providers].each do |provider|
+      StreamingLink.create!(name: provider[:provider_name], link: output[:streaming_link], movie_watchlist: movie_watchlist)
+    end
+  end
 end
