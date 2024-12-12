@@ -88,3 +88,8 @@ require "rest-client"
               <% end %>
             <% end %>
           <% end %>
+
+
+          <div class="trailer mb-5 text-center" style="background-image:url('https://img.youtube.com/vi/<%= movie["trailer_youtube_key"] %>/maxresdefault.jpg');">
+      <%= link_to "<i class='fa-solid fa-play'></i>".html_safe, "https://www.youtube.com/watch?v=#{movie["trailer_youtube_key"]}", target: "_blank" %>
+    </div>
