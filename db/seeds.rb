@@ -432,7 +432,7 @@ watchlist_api_output = [
 ]
 User.all.each do |user|
   watchlist_api_output.each do |output|
-    movie_watchlist = MovieWatchlist.create!(title: output[:title], user: user, movie_poster: output[:poster_path], description: output[:overview], release_date: Date.parse(output[:release_date]), rating: output[:vote_average])
+    movie_watchlist = MovieWatchlist.create!(title: output[:title], user: user, poster_path: output[:poster_path], overview: output[:overview], release_date: Date.parse(output[:release_date]), vote_average: output[:vote_average], runtime: output[:runtime], trailer_youtube_key: output[:trailer_youtube_key])
     output[:watch_providers].each do |provider|
       StreamingLink.create!(name: provider[:provider_name], link: output[:streaming_link], movie_watchlist: movie_watchlist)
     end
