@@ -10,12 +10,14 @@
 
 // component styles
 @import "components/menubar";
+@import "components/movie_card";
 
 // main styles
 @import "components/variables";
 
 // your stylesheets
 @import "pages/details";
+@import "pages/preferences_movies";
 
 body {
   margin: 0;
