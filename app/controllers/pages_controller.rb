@@ -117,12 +117,14 @@ class PagesController < ApplicationController
   end
 
   def prepare_result(full_results)
+    
     streaming_services_names = current_user.streaming_services.map do |streaming_services|
       streaming_services.name
     end
+    final_result = full_results.slice("backdrop_path", "overview", "poster_path", "release_date", "title", "vote_average", "runtime")
 
-    final_result = full_results.slice("backdrop_path", "id", "overview", "poster_path", "release_date", "title", "vote_average", "runtime")
     final_result["genre"] = @genre
+    final_result["tmdb_id"] = full_results["id"]
     watch_providers = full_results["watch/providers"]["results"][@country]
     final_result["streaming_link"] = watch_providers["link"]
     final_result["watch_providers"] = []

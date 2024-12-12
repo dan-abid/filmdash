@@ -8,34 +8,34 @@ class MovieWatchlistsController < ApplicationController
     @movie_watchlist = MovieWatchlist.find(params[:id])
   end
 
-  def add
-    output = params
-      @movie_watchlist = MovieWatchlist.new(
-        title: output[:title],
-        user: current_user,
-        movie_poster: output[:poster_path],
-        description: output[:overview],
-        release_date: Date.parse(output[:release_date]),
-        rating: output[:vote_average]
-      )
-    if @movie_watchlist.save
-      output[:watch_providers].each do |provider|
-        StreamingLink.create!(
-          name: provider[:provider_name],
-          link: output[:streaming_link],
-          movie_watchlist: @movie_watchlist
-        )
-      end
-      redirect_to @movie_watchlist
-    else
-      render :new
-    end
+  def new
+    @movie_watchlist = MovieWatchlist.new
   end
 
-  def delete
-    @movie = MovieWatchlist.find(params[:id])
-    @movie.destroy
+  def create
+    @movie_watchlist = MovieWatchlist.new(movie_watchlist_params)
+    @movie_watchlist.user = current_user
+    @movie_watchlist.save
+  end
 
-    redirect_to movie_watchlist_index_path
+  def destroy
+    @movie_watchlist = MovieWatchlist.find(params[:id])
+    @movie_watchlist.destroy
+  end
+
+  private
+
+  def movie_watchlist_params
+    params.require(:movie_watchlist).permit(
+      :title,
+      :overview,
+      :release_date,
+      :poster_path,
+      :backdrop_path,
+      :tmdb_id,
+      :vote_average,
+      :runtime,
+      :trailer_youtube_key
+    )
   end
 end
