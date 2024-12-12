@@ -1,6 +1,7 @@
 class MovieWatchlistsController < ApplicationController
   def index
     @movie_watchlists = current_user.movie_watchlists
+    # raise
   end
 
   def show
