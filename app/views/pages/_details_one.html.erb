@@ -33,11 +33,18 @@
       <p><strong>Overview: </strong><%= movie["overview"] %></p>
     </div>
 
-    <%= turbo_frame_tag "movie_#{movie["tmdb_id"]}" do %>
-      <%= render "movie_watchlist_button", movie: movie, is_in_watchlist: false %>
-    <% end %>
 
-    <div class="trailer mb-5 text-center" style="background-image:url('https://img.youtube.com/vi/<%= movie["trailer_youtube_key"] %>/maxresdefault.jpg');">
-      <%= link_to "<i class='fa-solid fa-play'></i>".html_safe, "https://www.youtube.com/watch?v=#{movie["trailer_youtube_key"]}", target: "_blank" %>
+    <iframe src="https://www.youtube.com/embed/<%= movie["trailer_youtube_key"] %>?playsinline=1" width="320" height="180" style="z-index=1000;"></iframe>
+    <div class="d-flex text-center flex-column mt-4">
+      <p>Watch this programm on:</p>
+      <div class="d-flex image-stream-pop justify-content-center">
+        <% movie["watch_providers"].each do |provider| %>
+          <%= link_to movie["streaming_link"], target: "_blank" do %>
+            <%= image_tag("https://image.tmdb.org/t/p/w200#{provider["logo_path"]}") %>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
+
   </div>

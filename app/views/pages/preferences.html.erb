@@ -179,3 +179,42 @@
   <%# <div class="container mt-4">
     <h5>Format</h5>
   </div> %>
+<script>
+  const images = document.querySelectorAll(".radio-space");
+  // console.log(images);
+
+  for (let  i = 0; i < images.length; i++) {
+    images[i].onclick = function(e) {
+      e.preventDefault();
+      // console.log(e);
+      const id = this.firstElementChild;
+      console.log(id)
+      // id.checked = !id.checked
+      id.checked = true
+      const children = this.parentElement.children
+      console.log(children)
+      for (let j = 0; j < children.length; j++) {
+        if (id.checked === false) {
+          children[j].classList.remove("d-none")
+          children[j].classList.add("border")
+          children[j].classList.add("border-danger")
+          continue
+        }
+
+        if (this === children[j]) {
+          children[j].classList.remove("d-none")
+          children[j].classList.add("border")
+          children[j].classList.add("border-danger")
+        }
+        else {
+          children[j].classList.toggle("d-none")
+          children[j].classList.remove("border")
+          children[j].classList.remove("border-danger")
+        }
+
+      }
+
+    }
+  }
+
+</script>
