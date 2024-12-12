@@ -282,13 +282,15 @@ sorted_streamings.each do |service|
   StreamingService.create!(name: service[:name], source_id: service[:source_id])
 end
 
+
+
 def create_user(first_name)
   puts "Created #{first_name} to login use: #{first_name}@gmail.com password: 123456"
   user = User.new(first_name: first_name, last_name: 'last_name', email:  "#{first_name}@gmail.com", password: '123456')
   user.country = Country.find_by(name: 'Canada')
-  StreamingService.all.each do |service|
-    user.streaming_services << service
-  end
+  user.streaming_services << StreamingService.find_by(name: "Netflix")
+  user.streaming_services << StreamingService.find_by(name: "The Criterion Channel")
+  user.streaming_services << StreamingService.find_by(name: "Amazon Prime Video")
   return user.save!
 end
 
