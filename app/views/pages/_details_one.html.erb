@@ -33,6 +33,10 @@
       <p><strong>Overview: </strong><%= movie["overview"] %></p>
     </div>
 
+    <%= turbo_frame_tag "movie_#{movie["tmdb_id"]}" do %>
+      <%= render "movie_watchlist_button", movie: movie, is_in_watchlist: false %>
+    <% end %>
+
     <div class="trailer mb-5 text-center" style="background-image:url('https://img.youtube.com/vi/<%= movie["trailer_youtube_key"] %>/maxresdefault.jpg');">
       <%= link_to "<i class='fa-solid fa-play'></i>".html_safe, "https://www.youtube.com/watch?v=#{movie["trailer_youtube_key"]}", target: "_blank" %>
     </div>
