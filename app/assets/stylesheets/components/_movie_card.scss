@@ -31,7 +31,7 @@
 
 .infos {
   // background-color: aqua;
-  height: 152px;
+  height: 142px;
   padding: 0;
   padding-left: 2%;
 }
@@ -96,13 +96,9 @@
 }
 
 .button-gap {
-  margin-top: 16%;
+  margin-top: auto;
   justify-content: space-between;
   height: 30%;
-}
-
-.button-gap button {
-  height: 100%;
 }
 
 .button-two {
