@@ -1,5 +1,4 @@
 .movie-card {
-  width: 100px;
   /* Fixed width */
   height: 142px;
   /* Fixed height */
@@ -83,16 +82,14 @@
   justify-content: center;
 }
 
-.more-details {}
-
-.watchlist {}
-
-.image-stream-pop {}
-
 .image-stream-pop a {
   width: 45%;
 }
 
 .image-stream-pop img {
   width: 45%;
+}
+
+.image-alone {
+ width: 100%;
 }

@@ -1,11 +1,11 @@
 
 <div
-    class="d-flex"
+    class="d-flex justify-content-center image-alone"
     data-controller="result-movie"
     data-result-movie-hide-class="d-none"
 >
     <div class="row justify-content-center movie-info mb-3 d-flex">
-        <div class="movie-card col-4" data-action="click->result-movie#toggle" style="background-image:url('https://image.tmdb.org/t/p/original<%= result["poster_path"] %>')"></div>
+      <div class="movie-card col-4" data-action="click->result-movie#toggle" style="background-image:url('https://image.tmdb.org/t/p/original<%= result["poster_path"] %>')"></div>
     </div>
     <div class="d-none infos d-flex flex-column align-items-start col-8" data-result-movie-target="infos">
         <div class="title">
