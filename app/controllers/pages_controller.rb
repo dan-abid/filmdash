@@ -50,7 +50,7 @@ class PagesController < ApplicationController
         details = JSON.parse(details_serialized)
         prepare_result(details)
       end
-      # raise
+
     end
 
     # raise
@@ -117,7 +117,7 @@ class PagesController < ApplicationController
   end
 
   def prepare_result(full_results)
-    
+
     streaming_services_names = current_user.streaming_services.map do |streaming_services|
       streaming_services.name
     end
