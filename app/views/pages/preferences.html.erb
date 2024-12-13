@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="section mt-3 marge-t-two">
+    <div class="section mt-4 marge-t-two">
       <h5>Runtime</h5>
       <div class="d-flex scrolling">
         <div class="radio-space" id="onehour-img">
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="section mt-3 marge-t-two">
+    <div class="section mt-4 marge-t-two">
       <h5>Genre</h5>
       <div class="d-flex scrolling">
         <div class="radio-space" id="action-img">
@@ -118,7 +118,7 @@
       </div>
     </div>
 
-    <div class="section mt-3 marge-t-two">
+    <div class="section mt-4 marge-t-two">
       <h5>Period</h5>
       <div class="d-flex scrolling">
         <div class="radio-space" id="thisyear-img">
@@ -172,7 +172,7 @@
       </div>
     </div>
 
-    <div class="text-center mt-3 form-submit">
+    <div class="text-center mt-4 form-submit">
       <%= f.submit "See my selection", class: "stylish-button" %>
     </div>
 <% end %>
@@ -198,6 +198,7 @@
           children[j].classList.remove("d-none")
           children[j].classList.add("border")
           children[j].classList.add("border-danger")
+          // children[j].parentElement.classList.remove("justify-content-center")
           continue
         }
 
@@ -205,6 +206,7 @@
           children[j].classList.remove("d-none")
           children[j].classList.add("border")
           children[j].classList.add("border-danger")
+          // children[j].parentElement.classList.add("justify-content-center")
         }
         else {
           children[j].classList.toggle("d-none")
