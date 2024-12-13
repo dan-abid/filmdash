@@ -7,6 +7,24 @@
 }
 
 
+.movie-card {
+  width: 97px;
+  /* Three cards per row with some spacing */
+  height: 142px;
+  /* Fixed height */
+  margin-bottom: 20px;
+  /* Add vertical spacing between rows */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 // .movie-card {
 //   width: calc(33.33% - 10px);
 //   /* Three cards per row with some spacing */
@@ -23,6 +41,7 @@
 //   justify-content: center;
 //   align-items: center;
 // }
+
 
 h1 {
   text-align: center;
