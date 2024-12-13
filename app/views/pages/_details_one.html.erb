@@ -38,12 +38,12 @@
     <div class="d-flex text-center flex-column mt-4">
       <p>Watch this programm on:</p>
       <div class="d-flex image-stream-pop justify-content-center">
-        <% movie["watch_providers"].each do |provider| %>
-          <%= link_to movie["streaming_link"], target: "_blank" do %>
-            <%= image_tag("https://image.tmdb.org/t/p/w200#{provider["logo_path"]}") %>
-          <% end %>
-        <% end %>
+        <%= render "pages/streaming_links", watch_providers: movie["watch_providers"] %>
       </div>
+
+    <%= turbo_frame_tag "movie_#{movie["tmdb_id"]}" do %>
+      <%= render "pages/movie_watchlist_button", movie: movie, is_in_watchlist: is_in_watchlist %>
+    <% end %>
 
     </div>
 

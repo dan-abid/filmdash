@@ -126,14 +126,21 @@ class PagesController < ApplicationController
     final_result["genre"] = @genre
     final_result["tmdb_id"] = full_results["id"]
     watch_providers = full_results["watch/providers"]["results"][@country]
-    final_result["streaming_link"] = watch_providers["link"]
-    final_result["watch_providers"] = []
+    tmdb_watch_providers_page_link = watch_providers["link"]
+    user_subscribed_providers = []
+
+    user_subscribed_watch_providers = watch_providers["flatrate"].select { |provider| streaming_services_names.include?(provider['provider_name']) }
+
     watch_providers["flatrate"].each do |provider|
-      puts provider['provider_name']
+      # puts provider['provider_name']
       if streaming_services_names.include?(provider['provider_name'])
-        final_result["watch_providers"] << provider
+        user_subscribed_providers << provider
       end
     end
+
+    tmdb_watch_providers = tmdb_watch_providers_page_link.empty? ? [] : scrape_tmdb_streaming_links(tmdb_watch_providers_page_link)
+    final_result["watch_providers"] = filter_watch_providers(tmdb_watch_providers, user_subscribed_providers)
+
     trailer_condition = full_results["videos"]["results"].find { |video| video["type"].downcase == "trailer" && video["site"].downcase == "youtube" }
     final_result["trailer_youtube_key"] = trailer_condition["key"] if trailer_condition
     # final_result["trailer_youtube_key"] = full_results["videos"]["results"].find { |video| video["type"].downcase == "trailer" && video["site"].downcase == "youtube" }["key"]
@@ -162,6 +169,36 @@ class PagesController < ApplicationController
     final_result = final_result.transform_keys ({"name" => "title", "first_air_date" => "release_date"})
     return final_result
   end
-end
 
-# {"format"=>"movie", "runtime"=>"60", "genre"=>"1", "period"=>"20240101", "commit"=>"Generate 3 programs"}
+  def scrape_tmdb_streaming_links(url)
+    doc = Nokogiri::HTML.parse(RestClient.get(url), nil, "utf-8")
+
+    streaming_providers = []
+    return streaming_providers if url.empty?
+
+    ott_providers = doc.search('div.ott_provider')
+    stream_ott_providers = ott_providers.find { |ott_provider| ott_provider.search('h3').text.strip.downcase == 'stream' }
+    return streaming_providers if stream_ott_providers.nil?
+
+    streaming_providers_links = stream_ott_providers.search('li:not(.hide) a')
+    streaming_providers_links.each do |streaming_providers_link|
+      streaming_providers << {
+        "streaming_link" => streaming_providers_link.attribute('href').value,
+        "logo_path" => streaming_providers_link.search('img').first.attribute('src').value
+      }
+    end
+
+    return streaming_providers
+  end
+
+  def filter_watch_providers(tmdb_watch_providers, user_subscribed_providers)
+    return [] if tmdb_watch_providers.empty? || user_subscribed_providers.empty?
+
+    user_subscribed_providers_logo_paths = user_subscribed_providers.map { |user_subscribed_provider| user_subscribed_provider["logo_path"] }
+
+    tmdb_watch_providers.select do |tmdb_watch_provider|
+      scraped_url_path = tmdb_watch_provider["logo_path"].split('/').last
+      user_subscribed_providers_logo_paths.include?("/#{scraped_url_path}")
+    end
+  end
+end
