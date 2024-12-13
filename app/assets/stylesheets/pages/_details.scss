@@ -26,14 +26,12 @@
   height: 25vh;
   padding: 10px;
   flex-wrap: nowrap;
-
 }
 
 .row {
   display: flex;
   width: 100%;
   flex-wrap: nowrap;
-
 }
 
 .col {
@@ -73,7 +71,6 @@
   padding: 10px;
   width: 100%;
   margin-bottom: 20px;
-
 }
 
 .movie-description-section p {
@@ -122,9 +119,45 @@
   background-repeat: no-repeat;
   object-fit: contain;
   background-position: center;
-
 }
 
 .trailer i {
   font-size: 350%;
+}
+
+// Styles for the "WATCH" and "DETAILS" buttons
+.watch-button,
+.details-button {
+  background-color: $white;
+  /* White background */
+  color: $black;
+  /* Black text */
+  padding: 7px 10px;
+  /* 7px padding above and below the text, 10px on the sides */
+  font-size: $medium-font;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 6px $transparent-grey;
+  /* Add shadow */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  margin-right: 5px;
+  /* Add 5px space between the buttons */
+}
+
+.details-button {
+  margin-right: 0;
+  /* Remove right margin for the last button */
+}
+
+.watch-button:hover,
+.details-button:hover {
+  background-color: $black;
+  /* Black background on hover */
+  color: $white;
+  /* White text on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  /* Slightly larger shadow on hover */
 }
