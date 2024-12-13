@@ -18,12 +18,12 @@
             <p></p>
         </div> %>
         <div class="d-flex button-gap">
-            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#watch-<%= result["tmdb_id"] %>">Watch now</button>
-            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#movie-<%= result["tmdb_id"] %>">More details</button>
-
+            <button class="btn watch-button" type="button" data-bs-toggle="modal" data-bs-target="#watch-<%= result["tmdb_id"] %>">WATCH</button>
+            <button class="btn details-button" type="button" data-bs-toggle="modal" data-bs-target="#movie-<%= result["tmdb_id"] %>">DETAILS</button>
         </div>
     </div>
 </div>
+
 
 <div class="modal fade" tabindex="-1" id="movie-<%= result["tmdb_id"] %>" aria-labelledby="details" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -36,14 +36,14 @@
         <%= render "details_one", movie: result %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <%= link_to movie_watchlists_path, method: :post, remote: true, class: '', data: { turbo_method: :post } do %>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary">Add to my watchlist</button>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
 
 <div class="modal fade" id="watch-<%= result["tmdb_id"] %>" tabindex="-1" aria-labelledby="watch" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
