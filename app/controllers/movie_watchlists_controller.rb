@@ -26,7 +26,7 @@ class MovieWatchlistsController < ApplicationController
   private
 
   def movie_watchlist_params
-    params.require(:movie_watchlist).permit(
+    safe_params = params.require(:movie_watchlist).permit(
       :title,
       :overview,
       :release_date,
@@ -35,7 +35,10 @@ class MovieWatchlistsController < ApplicationController
       :tmdb_id,
       :vote_average,
       :runtime,
-      :trailer_youtube_key
+      :trailer_youtube_key,
+      :watch_providers
     )
+    safe_params["watch_providers"] = JSON.parse(params[:movie_watchlist][:watch_providers])
+    return safe_params
   end
 end

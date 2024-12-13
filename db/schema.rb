@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_12_163751) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_13_134544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_12_163751) do
     t.string "vote_average"
     t.string "runtime"
     t.string "trailer_youtube_key"
+    t.string "watch_providers", default: "[]", null: false
     t.index ["user_id"], name: "index_movie_watchlists_on_user_id"
   end
 

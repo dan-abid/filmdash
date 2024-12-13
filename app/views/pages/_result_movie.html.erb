@@ -30,7 +30,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= render "details_one", movie: result %>
+        <%= render "details_one", movie: result, is_in_watchlist: false %>
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <%= link_to movie_watchlists_path, method: :post, remote: true, class: '', data: { turbo_method: :post } do %>
@@ -48,11 +48,7 @@
         <p class="modal-title fs-5">Watch this program on:</p>
       </div>
       <div class="modal-body mt-5 d-flex justify-content-center stream-body">
-        <% result["watch_providers"].each do |provider| %>
-          <%= link_to result["streaming_link"], target: "_blank" do %>
-            <%= image_tag("https://image.tmdb.org/t/p/w200#{provider["logo_path"]}") %>
-          <% end %>
-        <% end %>
+        <%= render "streaming_links", watch_providers: result["watch_providers"] %>
       </div>
     </div>
   </div>

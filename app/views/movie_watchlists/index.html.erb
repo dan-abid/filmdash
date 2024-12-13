@@ -16,7 +16,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <%= render "details_two", movie_watchlist: movie_watchlist %>
+              <%= render "pages/details_one", movie: movie_watchlist, is_in_watchlist: true %>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
