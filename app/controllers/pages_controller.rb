@@ -121,7 +121,7 @@ class PagesController < ApplicationController
     streaming_services_names = current_user.streaming_services.map do |streaming_services|
       streaming_services.name
     end
-    final_result = full_results.slice("backdrop_path", "overview", "poster_path", "release_date", "title", "vote_average", "runtime")
+    final_result = full_results.slice("backdrop_path", "id", "overview", "poster_path", "release_date", "title", "vote_average", "runtime")
 
     final_result["genre"] = @genre
     final_result["tmdb_id"] = full_results["id"]

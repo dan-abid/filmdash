@@ -1,6 +1,6 @@
 
 <div
-    class="d-flex justify-content-center image-alone"
+    class="d-flex justify-content-center px-3 image-alone"
     data-controller="result-movie"
     data-result-movie-hide-class="d-none"
 >
@@ -14,18 +14,18 @@
         <div class="rating">
             <p><i class="fa-solid fa-star text-warning"></i> <%= result["vote_average"] %>/10</p>
         </div>
-        <div class="description">
-            <p><%= result["overview"] %></p>
-        </div>
-        <div class="d-flex button-gap mt-3">
-            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#watch-<%= result["id"] %>">Watch now</button>
-            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#movie-<%= result["id"] %>">More details</button>
+        <%# <div class="description">
+            <p></p>
+        </div> %>
+        <div class="d-flex button-gap">
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#watch-<%= result["tmdb_id"] %>">Watch now</button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#movie-<%= result["tmdb_id"] %>">More details</button>
 
         </div>
     </div>
 </div>
 
-<div class="modal fade" tabindex="-1" id="movie-<%= result["id"] %>" aria-labelledby="details" aria-hidden="true">
+<div class="modal fade" tabindex="-1" id="movie-<%= result["tmdb_id"] %>" aria-labelledby="details" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="watch-<%= result["id"] %>" tabindex="-1" aria-labelledby="watch" aria-hidden="true">
+<div class="modal fade" id="watch-<%= result["tmdb_id"] %>" tabindex="-1" aria-labelledby="watch" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content background-pop mx-3 d-flex flex-column align-items-center">
       <div class="d-flex justify-content-center mt-4">

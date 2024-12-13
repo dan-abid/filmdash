@@ -323,17 +323,18 @@ watchlist_api_output = [{
     "watch_providers": [{"logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg", "provider_id": 8, "provider_name": "Netflix", "display_priority": 0}],
     "trailer_youtube_key": "y4SA9yUDgW8"},
 
-    {"backdrop_path": "/bguFhzIGpQdGQ6uizm07oMKbgHi.jpg",
-      "overview": "Léon, the top hit man in New York, has earned a rep as an effective \"cleaner\". But when his next-door neighbors are wiped out by a loose-cannon DEA agent, he becomes the unwilling custodian of 12-year-old Mathilda. Before long, Mathilda's thoughts turn to revenge, and she considers following in Léon's footsteps.",
-      "poster_path": "/yI6X2cCM5YPJtxMhUd3dPGqDAhw.jpg",
-      "release_date": "1994-09-14",
-      "title": "Léon: The Professional",
-      "vote_average": 8.306,
-      "runtime": 111,
-      "genre": "18",
-      "tmdb_id": 101,
-      "streaming_link": "https://www.themoviedb.org/movie/101-leon-the-professional/watch?locale=CA",
-      "watch_providers": [{"logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg", "provider_id": 8, "provider_name": "Netflix", "display_priority": 0}], "trailer_youtube_key": "Nq101UyQyTo"}]
+    {"backdrop_path": "/8e6avmXiqurj5LHkmdHBq6rc5jm.jpg",
+      "id": 11104,
+      "overview": "Two melancholic Hong Kong policemen fall in love: one with a mysterious underworld figure, the other with a beautiful and ethereal server at a late-night restaurant.",
+      "poster_path": "/43I9DcNoCzpyzK8JCkJYpHqHqGG.jpg",
+      "release_date": "1994-07-14", "title": "Chungking Express",
+      "vote_average": 7.992,
+      "runtime": 103,
+      "genre": "10749",
+      "tmdb_id": 11104,
+      "streaming_link": "https://www.themoviedb.org/movie/11104/watch?locale=CA",
+      "watch_providers": [],
+      "trailer_youtube_key": "P9Mxf_6pVA0"}]
 
 User.all.each do |user|
   watchlist_api_output.each do |output|

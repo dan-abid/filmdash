@@ -44,6 +44,7 @@
 
 .title p {
   margin: 0;
+  font-size: 1em;
   /* Supprimer la marge par défaut du paragraphe */
   /* Supprimer le padding du paragraphe */
   /* Aligner le texte à gauche */
@@ -52,12 +53,12 @@
 .rating {
   // background-color: brown;
   line-height: 1;
-  margin-top: 2%;
+  margin-top: 7%;
 }
 
 .rating p {
   margin: 0;
-  font-size: 60%;
+  font-size: 0.8em;
 }
 
 .description {
@@ -92,4 +93,26 @@
 
 .image-alone {
  width: 100%;
+}
+
+.button-gap {
+  margin-top: 16%;
+  justify-content: space-between;
+  height: 30%;
+}
+
+.button-gap button {
+  height: 100%;
+}
+
+.button-two {
+  display: flex;              /* Utilise flexbox pour centrer le contenu */
+  align-items: center;        /* Centre verticalement le texte */
+  justify-content: center;    /* Centre horizontalement le texte */
+  padding: 10px 20px;         /* Ajuste l'espace autour du texte */
+  text-align: center;         /* Assure que le texte est centré */
+  font-size: 1rem;            /* Taille de police par défaut */
+  width: auto;                /* Laisser la largeur s'ajuster */
+  height: auto;               /* Laisser la hauteur s'ajuster */
+  white-space: nowrap;        /* Empêche le texte de se découper */
 }
