@@ -3,7 +3,7 @@
 <% if @movie_watchlists.any? %>
   <div class="watchlist-grid">
     <% @movie_watchlists.each do |movie_watchlist| %>
-      <div class="movie-card" style="background-image:url('https://image.tmdb.org/t/p/original<%= movie_watchlist.movie_poster %>');" data-bs-toggle="modal" data-bs-target="#movie-<%= movie_watchlist.id %>">
+      <div class="movie-card" style="background-image:url('https://image.tmdb.org/t/p/original/<%= movie_watchlist.poster_path %>');" data-bs-toggle="modal" data-bs-target="#movie-<%= movie_watchlist.id %>">
         <!-- Movie card content or placeholder if needed -->
       </div>
 
@@ -16,7 +16,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <%= render "details_two", movie: movie_watchlist %>
+              <%= render "details_two", movie_watchlist: movie_watchlist %>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

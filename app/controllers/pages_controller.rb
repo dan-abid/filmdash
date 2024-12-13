@@ -43,8 +43,8 @@ class PagesController < ApplicationController
       request_url = build_tmdb_url_movies
       response = RestClient.get(request_url, request_headers)
       result_tt = JSON.parse(response)
-      @result_ids = result_tt["results"].sample(3).map { |movie| movie["id"] }
-
+      # @result_ids = result_tt["results"].sample(3).map { |movie| movie["id"] }
+      @result_ids = result_tt["results"].first(3).map { |movie| movie["id"] }
       @results = @result_ids.map do |result_id|
         details_serialized = RestClient.get("https://api.themoviedb.org/3/movie/#{result_id}?append_to_response=videos,watch/providers", request_headers)
         details = JSON.parse(details_serialized)
@@ -117,12 +117,14 @@ class PagesController < ApplicationController
   end
 
   def prepare_result(full_results)
+
     streaming_services_names = current_user.streaming_services.map do |streaming_services|
       streaming_services.name
     end
+    final_result = full_results.slice("backdrop_path", "overview", "poster_path", "release_date", "title", "vote_average", "runtime")
 
-    final_result = full_results.slice("backdrop_path", "id", "overview", "poster_path", "release_date", "title", "vote_average", "runtime")
     final_result["genre"] = @genre
+    final_result["tmdb_id"] = full_results["id"]
     watch_providers = full_results["watch/providers"]["results"][@country]
     final_result["streaming_link"] = watch_providers["link"]
     final_result["watch_providers"] = []
@@ -143,7 +145,7 @@ class PagesController < ApplicationController
       streaming_services.name
     end
 
-    final_result = full_results.slice("backdrop_path", "id", "overview", "poster_path", "first_air_date", "title", "vote_average")
+    final_result = full_results.slice("backdrop_path", "id", "overview", "poster_path", "first_air_date", "name", "vote_average")
     final_result["genre"] = @genre
     watch_providers = full_results["watch/providers"]["results"][@country]
     final_result["streaming_link"] = watch_providers["link"]
@@ -157,7 +159,7 @@ class PagesController < ApplicationController
     trailer_condition = full_results["videos"]["results"].find { |video| video["type"].downcase == "trailer" && video["site"].downcase == "youtube" }
     final_result["trailer_youtube_key"] = trailer_condition["key"] if trailer_condition
     # final_result["trailer_youtube_key"] = full_results["videos"]["results"].find { |video| video["type"].downcase == "trailer" && video["site"].downcase == "youtube" }["key"]
-    final_result["release_date"] = final_result.delete "first_air_date"
+    final_result = final_result.transform_keys ({"name" => "title", "first_air_date" => "release_date"})
     return final_result
   end
 end

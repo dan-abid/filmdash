@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/preferences", to: "pages#preferences", as: :preferences
   get "/preferences/movies", to: "pages#movies", as: :preferences_movies
-  
-  resources :movie_watchlists, only: [:index, :show]
-  get "/watchlist", to: "movie_watchlists#index", as: :watchlist
-  get "/watchlist/:id", to: "movie_watchlists#show", as: :watchlist_movie
+
+
+  resources :movie_watchlists, only: [:index, :show, :create, :destroy]
   get 'details', to: 'pages#details'
 end
