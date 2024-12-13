@@ -37,8 +37,8 @@
 
 .radio-space label {
   font-weight: 700;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
   text-align: center;
   font-family: $body-font;
   font-size: 1.2em;
@@ -62,7 +62,7 @@
   text-transform: uppercase; /* Texte en majuscules */
   border-radius: 8px; /* Coins arrondis */
   transition: all 0.3s ease; /* Transition fluide */
-  cursor: pointer; /* Curseur en forme de main */
+  // cursor: pointer; /* Curseur en forme de main */
   display: inline-block; /* Pour que le bouton ne prenne que l'espace nécessaire */
   text-align: center; /* Centrer le texte */
   box-sizing: border-box; /* S'assurer que le padding est inclus dans la taille totale */
@@ -76,7 +76,7 @@
 
 /* Effet au clic (active) */
 .stylish-button:active {
-  transform: scale(0.98); /* Effet de pression au clic */
+  // transform: scale(0.98); /* Effet de pression au clic */
 }
 
 /* Optionnel: styliser le conteneur si nécessaire */
