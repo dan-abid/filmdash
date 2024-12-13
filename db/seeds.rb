@@ -299,140 +299,45 @@ david = create_user('david')
 heather = create_user('heather')
 
 puts 'Creating Movie Watchlists'
-watchlist_api_output = [
-  {
-  "backdrop_path": "/kti9ufHhCKaOLjg2to4RKfrlkmh.jpg",
-  "id": 1263421,
-  "overview": "It's the ultimate showdown. The toughest fighters from \"Baki Hanma\" and \"Kengan Ashura\" clash in this unprecedented, hard-hitting martial arts crossover.",
-  "poster_path": "/etbHJxil0wHvYOCmibzFLsMcl2C.jpg",
-  "release_date": "2024-06-05",
-  "title": "Baki Hanma VS Kengan Ashura",
-  "vote_average": 7.585,
-  "runtime": 60,
-  "genre": "28",
-  "streaming_link": "https://www.themoviedb.org/movie/1263421-vs/watch?locale=CA",
-  "watch_providers": [
-    {
-      "logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
-      "provider_id": 8,
-      "provider_name": "Netflix",
-      "display_priority": 0
-    },
-    {
-      "logo_path": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
-      "provider_id": 1796,
-      "provider_name": "Netflix basic with Ads",
-      "display_priority": 110
-    }
-  ],
-  "trailer_youtube_key": "nWMbcamVl7Y"
-},
-{
-  "backdrop_path": "/nL0q3UcNj4MOMluIUE42bc7PtW0.jpg",
-  "id": 1280768,
-  "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration; but the festivities are cut short when an old nemesis from Myrtle's secret agent past appears on the island.",
-  "poster_path": "/mh4Mk95u7fdY4D4t5kRGQpQbVFy.jpg",
-  "release_date": "2024-06-21",
-  "title": "No Time to Spy: A Loud House Movie",
-  "vote_average": 7.1,
-  "runtime": 81,
-  "genre": "28",
-  "streaming_link": "https://www.themoviedb.org/movie/1280768-no-time-to-spy-a-loud-house-movie/watch?locale=CA",
-  "watch_providers": [
-    {
-      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
-      "provider_id": 531,
-      "provider_name": "Paramount Plus",
-      "display_priority": 11
-    },
-    {
-      "logo_path": "/hExO4PtimLIYn3kBOrzsejNv7cT.jpg",
-      "provider_id": 582,
-      "provider_name": "Paramount+ Amazon Channel",
-      "display_priority": 13
-    },
-    {
-      "logo_path": "/djTJ7pAkIhmPaN3eTA6wTUrphNG.jpg",
-      "provider_id": 606,
-      "provider_name": "StackTV Amazon Channel",
-      "display_priority": 78
-    },
-    {
-      "logo_path": "/9BgaNQRMDvVlji1JBZi6tcfxpKx.jpg",
-      "provider_id": 257,
-      "provider_name": "fuboTV",
-      "display_priority": 96
-    },
-    {
-      "logo_path": "/tJqmTmQ8jp9WfyaZfApHK8lSywA.jpg",
-      "provider_id": 1853,
-      "provider_name": "Paramount Plus Apple TV Channel ",
-      "display_priority": 116
-    },
-    {
-      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
-      "provider_id": 2303,
-      "provider_name": "Paramount Plus Premium",
-      "display_priority": 166
-    },
-    {
-      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
-      "provider_id": 2304,
-      "provider_name": "Paramount Plus Basic with Ads",
-      "display_priority": 167
-    }
-  ],
-  "trailer_youtube_key": "3gPGMqXUFl0"
-},
-{
-  "backdrop_path": "/6SLyu9ygASsrOqkCpjAwtyG9PWW.jpg",
-  "id": 1094556,
-  "overview": "Twins Phoebe and Max are enjoying their superhero lifestyle, but when one 'save' goes awry, the Thundermans are sent back to Hiddenville. While Hank and Barb enjoy their return, and Billy and Nora look forward to a normal high school life, Max and Phoebe are determined to regain their superhero status.",
-  "poster_path": "/bzFY5gwXOS6WWxQiSeofi1Qa62x.jpg",
-  "release_date": "2024-03-07",
-  "title": "The Thundermans Return",
-  "vote_average": 7.1,
-  "runtime": 70,
-  "genre": "28",
-  "streaming_link": "https://www.themoviedb.org/movie/1094556-the-thundermans-return/watch?locale=CA",
-  "watch_providers": [
-    {
-      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
-      "provider_id": 531,
-      "provider_name": "Paramount Plus",
-      "display_priority": 11
-    },
-    {
-      "logo_path": "/hExO4PtimLIYn3kBOrzsejNv7cT.jpg",
-      "provider_id": 582,
-      "provider_name": "Paramount+ Amazon Channel",
-      "display_priority": 13
-    },
-    {
-      "logo_path": "/tJqmTmQ8jp9WfyaZfApHK8lSywA.jpg",
-      "provider_id": 1853,
-      "provider_name": "Paramount Plus Apple TV Channel ",
-      "display_priority": 116
-    },
-    {
-      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
-      "provider_id": 2303,
-      "provider_name": "Paramount Plus Premium",
-      "display_priority": 166
-    },
-    {
-      "logo_path": "/h5DcR0J2EESLitnhR8xLG1QymTE.jpg",
-      "provider_id": 2304,
-      "provider_name": "Paramount Plus Basic with Ads",
-      "display_priority": 167
-    }
-  ],
-  "trailer_youtube_key": "gYA5WOFhd-Y"
-}
-]
+watchlist_api_output = [{
+  "backdrop_path": "/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
+  "overview": "Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
+  "poster_path": "/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+  "release_date": "1994-09-23",
+  "title": "The Shawshank Redemption",
+  "vote_average": 8.708,
+  "runtime": 142,
+  "genre": "18",
+  "tmdb_id": 278,
+  "streaming_link": "https://www.themoviedb.org/movie/278-the-shawshank-redemption/watch?locale=CA",
+  "watch_providers": [{"logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg", "provider_id": 8, "provider_name": "Netflix", "display_priority": 0}],
+  "trailer_youtube_key": "PLl99DlL6b4"},
+
+  {"backdrop_path": "/rW2xRFlJRbTnBJlQTSjQmjevIwb.jpg", "overview": "As U.S. troops storm the beaches of Normandy, three brothers lie dead on the battlefield, with a fourth trapped behind enemy lines. Ranger captain John Miller and seven men are tasked with penetrating German-held territory and bringing the boy home.", "poster_path": "/AdpcyHDrwxUuBi6OCSvNbAmRLKK.jpg",
+    "release_date": "1998-07-24",
+    "title": "Saving Private Ryan",
+    "vote_average": 8.217, "runtime": 169,
+    "genre": "18",
+    "tmdb_id": 857,
+    "streaming_link": "https://www.themoviedb.org/movie/857-saving-private-ryan/watch?locale=CA",
+    "watch_providers": [{"logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg", "provider_id": 8, "provider_name": "Netflix", "display_priority": 0}],
+    "trailer_youtube_key": "y4SA9yUDgW8"},
+
+    {"backdrop_path": "/bguFhzIGpQdGQ6uizm07oMKbgHi.jpg",
+      "overview": "Léon, the top hit man in New York, has earned a rep as an effective \"cleaner\". But when his next-door neighbors are wiped out by a loose-cannon DEA agent, he becomes the unwilling custodian of 12-year-old Mathilda. Before long, Mathilda's thoughts turn to revenge, and she considers following in Léon's footsteps.",
+      "poster_path": "/yI6X2cCM5YPJtxMhUd3dPGqDAhw.jpg",
+      "release_date": "1994-09-14",
+      "title": "Léon: The Professional",
+      "vote_average": 8.306,
+      "runtime": 111,
+      "genre": "18",
+      "tmdb_id": 101,
+      "streaming_link": "https://www.themoviedb.org/movie/101-leon-the-professional/watch?locale=CA",
+      "watch_providers": [{"logo_path": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg", "provider_id": 8, "provider_name": "Netflix", "display_priority": 0}], "trailer_youtube_key": "Nq101UyQyTo"}]
+
 User.all.each do |user|
   watchlist_api_output.each do |output|
-    movie_watchlist = MovieWatchlist.create!(title: output[:title], user: user, poster_path: output[:poster_path], overview: output[:overview], release_date: Date.parse(output[:release_date]), vote_average: output[:vote_average], runtime: output[:runtime], trailer_youtube_key: output[:trailer_youtube_key])
+    movie_watchlist = MovieWatchlist.create!(title: output[:title], user: user, poster_path: output[:poster_path], overview: output[:overview], release_date: Date.parse(output[:release_date]), vote_average: output[:vote_average], runtime: output[:runtime], trailer_youtube_key: output[:trailer_youtube_key], backdrop_path: output[:backdrop_path])
     output[:watch_providers].each do |provider|
       StreamingLink.create!(name: provider[:provider_name], link: output[:streaming_link], movie_watchlist: movie_watchlist)
     end
