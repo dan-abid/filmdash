@@ -13,11 +13,16 @@
             <p><%= movie["runtime"] %></p>
             <p>min</p>
           </div>
+          <div class="d-flex gap-5 providers justify-content-start">
+            <p>WATCH ON:</p>
+            <%= render "pages/streaming_links", watch_providers: movie["watch_providers"] %>
+          </div>
         </div>
 
 
         <div class="col-4" style="font-size: 85%;">
           <p><i class="fa-solid fa-star text-warning"></i> <%= movie["vote_average"] %><strong>/10</strong></p>
+
         </div>
 
         <div class="col-4">
@@ -29,21 +34,17 @@
     </div>
 
 
-    <div class="movie-description-section">
-      <p><strong>Overview: </strong><%= movie["overview"] %></p>
+    <div class="overviews">
+      <p><strong>Overview:  </strong><%= movie["overview"] %></p>
     </div>
 
 
     <iframe src="https://www.youtube.com/embed/<%= movie["trailer_youtube_key"] %>?playsinline=1" width="320" height="180" style="z-index=1000;"></iframe>
-    <div class="d-flex text-center flex-column mt-4">
-      <p>Watch this programm on:</p>
-      <div class="d-flex image-stream-pop justify-content-center">
-        <%= render "pages/streaming_links", watch_providers: movie["watch_providers"] %>
-      </div>
+    <div class="d-flex text-center flex-column mt-4 mb-5">
 
-    <%= turbo_frame_tag "movie_#{movie["tmdb_id"]}" do %>
-      <%= render "pages/movie_watchlist_button", movie: movie, is_in_watchlist: is_in_watchlist %>
-    <% end %>
+      <%= turbo_frame_tag "movie_#{movie["tmdb_id"]}" do %>
+        <%= render "pages/movie_watchlist_button", movie: movie, is_in_watchlist: is_in_watchlist %>
+      <% end %>
 
     </div>
 

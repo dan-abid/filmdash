@@ -84,11 +84,13 @@
 }
 
 .image-stream-pop a {
-  width: 45%;
+  width: 60%;
+  padding-top: 70%;
+  padding-right: 10%
 }
 
 .image-stream-pop img {
-  width: 45%;
+  width: 100%;
 }
 
 .image-alone {
@@ -112,3 +114,20 @@
   height: auto;               /* Laisser la hauteur s'ajuster */
   white-space: nowrap;        /* Empêche le texte de se découper */
 }
+
+.padding-watch {
+  padding-top: 29%;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+.overviews {
+  padding-left: 4%;
+  padding-right: 4%;
+  font-size: 90%;
+  padding-bottom: 10%;
+  padding-top: 10%;
+}
+ .providers img {
+  width: 45px;
+ }

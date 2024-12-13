@@ -33,9 +33,7 @@
         <%= render "details_one", movie: result, is_in_watchlist: false %>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <%= link_to movie_watchlists_path, method: :post, remote: true, class: '', data: { turbo_method: :post } do %>
-          <button type="button" class="btn add-to-watchlist-button">ADD TO WATCHLIST</button>
-        <% end %>
+
       </div>
     </div>
   </div>
